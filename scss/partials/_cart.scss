@@ -48,8 +48,6 @@
           @include justify-content(space-between);
           @include font(16px, $basic-text-color, 800);
 
-
-
           .cart--count {
 
             .input__count {
@@ -58,13 +56,12 @@
             }
           }
         }
-
       }
 
-      .cart__count {
+      .cart__del {
         text-align: center;
 
-        .cart__text--remove {
+        .btn__remove {
           @include font(16px, #ffffff, 400);
           display: inline-block;
 

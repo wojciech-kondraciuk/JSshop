@@ -2,6 +2,8 @@
 const listing = document.createElement("div");
 const popup = document.createElement("div");
 const modal = document.querySelector(".modal");
+const listItem = document.querySelector(".cart__list");
+const basket = document.querySelector(".basket");
 
 let cart = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
@@ -20,9 +22,8 @@ class Products {
 
 class UI {
   displayProducts(products) {
-    let output;
     products.forEach(item => {
-      output += `
+      listing.innerHTML += `
         <div class="product">
           <a href="#" class="product__link">
             <img src="#" alt="${item.title}" class="product__img">
@@ -37,7 +38,7 @@ class UI {
         </div>
       `;
     });
-    listing.innerHTML = output;
+
     listing.classList.add("listing");
     document.body.appendChild(listing);
   }
@@ -67,7 +68,7 @@ class UI {
     buttons.forEach(button => {
       let id = parseInt(button.dataset.id);
 
-      button.addEventListener("click", e => {
+      button.addEventListener("click", () => {
         let cartItem = { ...Storage.getProduct(id), amount: 1 };
         cart = [...cart, cartItem];
 
@@ -75,16 +76,14 @@ class UI {
           cart.find(a => a.id === id)
         );
 
-        if (unique.includes(cartItem) == false) {
-          this.displayModal("powtórka");
-        } else {
-          this.displayModal("dodano");
-        }
+        // if (unique.includes(cartItem) == false) {
+        //   this.displayModal("powtórka");
+        // } else {
+        //   this.displayModal("dodano");
+        // }
 
         Storage.saveCart(unique);
         this.setCartValues(cart);
-        this.addCartItem(cartItem);
-        this.showCart();
       });
     });
   }
@@ -97,31 +96,58 @@ class UI {
       itemsTotal += item.amount;
     });
   }
-  addCartItem(item) {
-    const div = document.createElement("div");
-    div.innerHTML = `tutaj miniaturki karty`;
+  showBasket(cart) {
+    basket.addEventListener("click", () => {
+      cart = Storage.getCart();
+      listItem.innerHTML = "";
+      for (var i in cart) {
+        listItem.innerHTML += `
+        <div class="cart__item">
+        <div class="cart__img">
+          <img src="${cart[i].url}" alt=""
+            class="img">
+        </div>
+        <div class="cart__text">
+          <h6 class="cart__text--name">${cart[i].name}</h6>
+          <div class="cart__text--price">
+            <span class="cart--price">Cena: <strong>${cart[i].price}</strong> pln</span>
+            <div class="cart--count">
+              <input type="number" name="counter" class="input__count" min="1" max="100" value="1"> szt.
+            </div>
+          </div>
+        </div>
+        <div class="cart__del">
+          <button class="btn__remove"><i class="fas fa-trash-alt"></i></button>
+        </div>
+      </div>
+      `;
+      }
+      return listItem;
+    });
   }
-  showCart() {
-    let show = "pokazywanie i ukrywanie kary";
-  }
-  hideCart() {
-    let show = " ukrywanie kary";
-  }
+
   setupApp() {
     this.setCartValues(cart);
+    this.showBasket(cart);
   }
 }
 
 class Storage {
   static saveProducts(products) {
-    localStorage.setItem("products", JSON.stringify(products));
+    return localStorage.setItem("products", JSON.stringify(products));
   }
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem("products"));
     return products.find(product => product.id === id);
   }
   static saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    return localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  static getCart() {
+    return localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : [];
   }
 }
 
@@ -137,23 +163,3 @@ document.addEventListener("DOMContentLoaded", () => {
     ui.getButtons();
   });
 });
-
-// const toggleModal = () => {
-//   modal.classList.toggle("show-modal");
-// };
-
-// const windowOnClick = e => {
-//   if (e.target === modal) {
-//     toggleModal();
-//   }
-// };
-
-// window.addEventListener("click", windowOnClick);
-
-// const modal = document.querySelector(".modal");
-
-// if (document.body.classList.contains("show-modal")) {
-//   modal.classList.remov("show-modal");
-// } else {
-//   modal.classList.add("show-modal");
-// }
