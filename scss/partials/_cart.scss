@@ -1,0 +1,6 @@
+.cart {
+  @include position(absolute, $top: 80px, $right: 0);
+  @include size(500px, 100vh);
+  background: green;
+
+}

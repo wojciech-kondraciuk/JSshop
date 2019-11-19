@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+  <link href="scss/main.css" rel="stylesheet">
+  <title>mobile_first</title>
+</head>
+
+<body>
+  <header class="header">
+    <a href="/" class="logo">meble</a>
+    <ul class="nav">
+      <li class="nav__item">
+        <a href="#" class="nav__link active">Products</a>
+        <div class="nav__sub">
+          <ul class="nav__sub_list">
+            <li class="nav__sub--item">
+              <a class="nav__sub--link" href="#">Bedroom</a>
+            </li>
+            <li class="nav__sub--item">
+              <a class="nav__sub--link" href="#">Bed</a>
+            </li>
+            <li class="nav__sub--item">
+              <a class="nav__sub--link" href="#">Restaurant</a>
+            </li>
+            <li class="nav__sub--item">
+              <a class="nav__sub--link" href="#">Reception</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav__item">
+        <a href="#" class="nav__link">About</a>
+      </li>
+      <li class="nav__item">
+        <a href="#" class="nav__link">Blog</a>
+      </li>
+      <li class="nav__item">
+        <a href="#" class="nav__link">Contact</a>
+      </li>
+    </ul>
+    <div class="social">
+      <i class="fab fa-facebook-square"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter-square"></i>
+    </div>
+    <div class="basket">
+      <div class="basket__icon">
+        <i class="fas fa-shopping-basket"></i>
+        <div class="basket__item">0</div>
+      </div>
+      <div class="basket__name">koszyk</div>
+    </div>
+  </header>
+
+  <div class="cart">
+    <span class="cross"><i class="fas fa-times"></i></span>
+    <div class="cart__list">
+      <div class="cart__item">
+        <div class="cart__item--img">obrazek</div>
+        <div class="cart__item--text">
+          <h6 class="item--name">name</h6>
+          <span class="item-price">20</span>
+          <button class="item--remove">delete</button>
+        </div>
+        <div class="cart__item--count">
+          <input type="number" name="counter" class="item--count" min="1" max="100" value="1">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+  <script type="module" src="js/scripts.js"></script>
+</body>
+
+</html>

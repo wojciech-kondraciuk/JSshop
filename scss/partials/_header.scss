@@ -1,0 +1,101 @@
+.header {
+  @include flexbox;
+  @include justify-content(space-between);
+  @include position(fixed, $top: 0, $left: 0);
+  width: 100%;
+  background: $bright-text-color;
+  box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.1);
+  z-index: 999;
+  padding: 10px 20px;
+
+  .logo {
+    cursor: pointer;
+    @include size(148px, 60px);
+    background-image: url(../../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    text-indent: -9999em;
+    flex: 1;
+  }
+
+  .nav {
+    @include flexbox;
+    @include position(relative, $top: 0, $left: 0);
+    @include align-items(center);
+    @include justify-content(center);
+    flex: 8;
+
+    &__sub {
+      display: none;
+    }
+
+    &__item {
+      margin: 0 1px;
+      text-align: center;
+    }
+
+    &__link {
+      text-decoration: none;
+      @include font(18px, $basic-text-color);
+      padding: 30px 20px;
+      transition: .3s;
+
+      &.active,
+      &:hover {
+        background: $basic-layout-color;
+        color: #ffffff;
+
+      }
+    }
+  }
+
+  .basket {
+    cursor: pointer;
+    @include flexbox;
+    @include font(26px, $basic-header-color, 400);
+    @include align-items(center);
+    @include justify-content(flex-end);
+    flex: 1;
+
+    &__icon {
+      position: relative;
+    }
+
+    &__item {
+      @include position(absolute, $top: -13px, $left: -18px);
+      width: 25px;
+      height: 25px;
+      background: $basic-layout-color;
+      @include font(14px, #ffffff, 400, 25px);
+      text-align: center;
+      border-radius: 100%;
+    }
+
+    &__name {
+      @include font(16px, $basic-header-color, 400);
+      margin-left: 3px;
+    }
+
+    &:hover {
+      color: $basic-layout-color;
+    }
+  }
+}
+
+.social {
+  @include flexbox;
+  @include align-items(center);
+  @include font(22px, $basic-text-color, 400);
+  @include justify-content(center);
+  flex: 1;
+
+  i {
+    margin: 0 5px;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      color: $basic-layout-color;
+    }
+  }
+}
