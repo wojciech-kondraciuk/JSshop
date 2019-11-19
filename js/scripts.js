@@ -1,8 +1,7 @@
+("use strict");
 const listing = document.createElement("div");
 const popup = document.createElement("div");
 const modal = document.querySelector(".modal");
-
-("use strict");
 
 let cart = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
@@ -46,11 +45,10 @@ class UI {
   displayModal = warning => {
     let md = `
       <div class="modal-content">
-        <span class="close-button">×</span>
+        <span class="close-button"><i class="fas fa-times"></i></span>
         <h1>${warning}</h1>
       </div>
   `;
-
     popup.classList.add("modal");
     popup.innerHTML = md;
     document.body.appendChild(popup);

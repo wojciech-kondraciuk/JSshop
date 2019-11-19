@@ -1,6 +1,94 @@
 .cart {
   @include position(absolute, $top: 80px, $right: 0);
-  @include size(500px, 100vh);
-  background: green;
+  @include size(430px, 100vh);
+
+  .cross {
+    @include font(24px, red);
+    cursor: pointer;
+
+    &:hover {
+      color: $basic-layout-color;
+    }
+  }
+
+  &__list {
+    text-align: left;
+
+    .cart__item {
+      @include flexbox;
+      @include justify-content(space-between);
+
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+
+
+      .cart__img {
+        @include size(100px, 100px);
+
+
+        .img {
+          @include size(100px, auto);
+        }
+      }
+
+      .cart__text {
+
+        @include flexbox;
+        @include flex-direction(column);
+        @include justify-content(space-between);
+        padding: 0 20px;
+
+        &--name {
+          @include font(14px, $basic-text-color, 400, 17px);
+          margin-bottom: 5px;
+        }
+
+        &--price {
+          @include flexbox;
+          @include justify-content(space-between);
+          @include font(16px, $basic-text-color, 800);
+
+
+
+          .cart--count {
+
+            .input__count {
+              @include size(50px, auto);
+              text-align: center;
+            }
+          }
+        }
+
+      }
+
+      .cart__count {
+        text-align: center;
+
+        .cart__text--remove {
+          @include font(16px, #ffffff, 400);
+          display: inline-block;
+
+          border-radius: 0.15em;
+          text-decoration: none;
+          text-transform: uppercase;
+          background-color: #ff0000;
+          box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+          text-align: center;
+          position: relative;
+          border: none;
+          cursor: pointer;
+          transition: .4s;
+          height: 100%;
+
+          &:hover {
+            background: $basic-layout-color;
+          }
+        }
+
+      }
+
+    }
+
+  }
 
 }
