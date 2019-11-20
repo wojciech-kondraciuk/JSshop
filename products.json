@@ -1,13 +1,4 @@
 [{
-    "id": 0,
-    "price": 0,
-    "title": "zerowy",
-    "name": "odio adipisci rerum aut animi",
-    "email": "Nikita@garfield.biz",
-    "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut. Etiam condimentum efficitur ligula, eget mollis metus. Mauris ex eros, rutrum a sagittis sit amet, suscipit ut elit. Aliquam dapibus condimentum maximus. Pellentesque a urna a ligula ultrices congue",
-    "url": "img/3.jpeg"
-  },
-  {
     "id": 1,
     "price": 1,
     "title": "sunt aut facere repellat provpriceent occaecati excepturi optio reprehenderit",
@@ -32,7 +23,7 @@
     "name": "odio adipisci rerum aut animi",
     "email": "Nikita@garfield.biz",
     "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut. Etiam condimentum efficitur ligula, eget mollis metus. Mauris ex eros, rutrum a sagittis sit amet, suscipit ut elit. Aliquam dapibus condimentum maximus. Pellentesque a urna a ligula ultrices congue",
-    "url": "img/3.jpeg"
+    "url": "img/3.jpg"
   },
   {
     "id": 4,
@@ -41,7 +32,7 @@
     "name": "alias odio sit",
     "email": "Lew@alysha.tv",
     "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provpriceent rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit. Etiam condimentum efficitur ligula, eget mollis metus. Mauris ex eros, rutrum a sagittis sit amet, suscipit ut elit. Aliquam dapibus condimentum maximus. Pellentesque a urna a ligula ultrices congue",
-    "url": "img/4.jpeg"
+    "url": "img/4.jpg"
   },
   {
     "id": 5,
@@ -50,7 +41,7 @@
     "name": "vero eaque aliquprice doloribus et culpa",
     "email": "Hayden@althea.biz",
     "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque. Etiam condimentum efficitur ligula, eget mollis metus. Mauris ex eros, rutrum a sagittis sit amet, suscipit ut elit. Aliquam dapibus condimentum maximus. Pellentesque a urna a ligula ultrices congue",
-    "url": "img/5.jpeg"
+    "url": "img/5.jpg"
   },
   {
     "id": 6,

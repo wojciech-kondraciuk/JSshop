@@ -10,7 +10,7 @@
 
   .logo {
     cursor: pointer;
-    @include size(148px, 60px);
+    @include size(198px, 60px);
     background-image: url(../../img/logo.png);
     background-repeat: no-repeat;
     background-position: top left;
@@ -23,7 +23,7 @@
     @include position(relative, $top: 0, $left: 0);
     @include align-items(center);
     @include justify-content(center);
-    flex: 8;
+    flex: 5;
 
     &__sub {
       display: none;

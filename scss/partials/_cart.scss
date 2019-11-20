@@ -23,8 +23,7 @@
 
 
       .cart__img {
-        @include size(100px, 100px);
-
+        text-align: center;
 
         .img {
           @include size(100px, auto);
