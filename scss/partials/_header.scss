@@ -3,7 +3,7 @@
   @include justify-content(space-between);
   @include position(relative, $top: 0, $left: 0);
   width: 100%;
-  background: $bright-text-color;
+  background: $header-bg-color;
   box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.1);
   z-index: 999;
   padding: 10px 20px;

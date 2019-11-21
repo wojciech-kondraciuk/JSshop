@@ -1,13 +1,20 @@
 .cart {
-  @include position(absolute, $top: 80px, $right: 0);
-  @include size(430px, 100vh);
+  @include position(absolute, $top: 120px, $right: 0);
+  @include size(350px, auto);
+  padding: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.2);
 
   .cross {
-    @include font(24px, red);
+    @include font(14px, $bright-text-color, 400, 25px);
+    @include position(absolute, $top: -15px, $left: -15px);
     cursor: pointer;
+    background: $smallButtons;
+    @include size(25px, 25px);
+    text-align: center;
+    border-radius: 50%;
 
     &:hover {
-      color: $basic-layout-color;
+      background: $basic-text-color;
     }
   }
 
@@ -17,9 +24,9 @@
     .cart__item {
       @include flexbox;
       @include justify-content(space-between);
-
       margin-bottom: 10px;
       padding-bottom: 10px;
+
 
       .cart__img {
         text-align: center;
@@ -30,15 +37,14 @@
       }
 
       .cart__text {
-
+        flex-basis: 180px;
         @include flexbox;
         @include flex-direction(column);
         @include justify-content(space-between);
-        padding: 0 20px;
+
 
         &--name {
-          @include font(14px, $basic-text-color, 400, 17px);
-          margin-bottom: 5px;
+          @include font(16px, $basic-text-color, 900, 17px);
         }
 
         &--price {
@@ -59,24 +65,17 @@
       .cart__del {
         text-align: center;
 
-        .btn__remove {
-          @include font(16px, #ffffff, 400);
-          display: inline-block;
 
-          border-radius: 0.15em;
-          text-decoration: none;
-          text-transform: uppercase;
-          background-color: #ff0000;
-          box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
-          text-align: center;
-          position: relative;
-          border: none;
+        .btn__remove {
+          @include size(20px, 25px);
+          background-color: none;
+          background-image: url(../../img/del.png);
+          background-position: center center;
+          background-repeat: no-repeat;
           cursor: pointer;
-          transition: .4s;
-          height: 100%;
 
           &:hover {
-            background: $basic-layout-color;
+            opacity: .5;
           }
         }
 
@@ -85,5 +84,33 @@
     }
 
   }
+
+  &__total {
+    @include flexbox;
+    @include flex-direction(column);
+    text-align: center;
+    background: $basic-layout-color;
+    text-align: center;
+    @include font(18px, $bright-text-color, 900);
+    padding: 20px;
+
+    .cart__pay {
+      padding: 10px;
+    }
+
+    .cart__buy {
+      background: $smallButtons;
+      cursor: pointer;
+      padding: 10px;
+      @include font(14px, $bright-text-color, 900);
+      text-transform: uppercase;
+    }
+  }
+
+
+}
+
+.header .basket.show .cart {
+  background: red;
 
 }
