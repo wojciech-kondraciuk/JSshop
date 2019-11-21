@@ -1,12 +1,11 @@
-("use strict");
-const listing = document.createElement("div");
-const total = document.querySelector(".total");
-const totalItems = document.querySelector(".items");
+// variables
+const cartBtn = document.querySelector(".basket");
+const cartItems = document.querySelector(".basket__item");
+const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart__list");
-const cartHTML = document.querySelector(".cart");
-const basket = document.querySelector(".basket__item");
-
+const productsDOM = document.querySelector(".listing");
 let cart = [];
+let buttonsDOM = [];
 
 class Products {
   async getProducts() {
@@ -21,66 +20,59 @@ class Products {
 
 class UI {
   displayProducts(products) {
+    let result = "";
     products.forEach(item => {
-      listing.innerHTML += `
-        <div class="product">
-          <a href="#" class="product__link">
-            <img src="#" alt="${item.title}" class="product__img">
-          </a>
-          <div class="product-txt">
-            <h6 class="product-txt__header">${item.name}</h6>
-            <button data-id="${item.id}" class="product-txt__basket">
-              <i class="fas fa-shopping-basket"></i> Add to cart
-            </button>
-            <div class="product-txt__price">${item.id}</div>
-          </div>
+      result += `
+      <div class="product">
+        <a href="#" class="product__link">
+          <img src="#" alt="${item.title}" class="product__img">
+        </a>
+        <div class="product-txt">
+          <h6 class="product-txt__header">${item.name}</h6>
+          <button data-id="${item.id}" class="product-txt__basket">
+            <i class="fas fa-shopping-basket"></i> Add to cart
+          </button>
+          <div class="product-txt__price">${item.id}</div>
         </div>
-      `;
+      </div>
+   `;
     });
-
-    listing.classList.add("listing");
-    document.body.appendChild(listing);
+    productsDOM.innerHTML = result;
   }
-
-  getButtons() {
-    const buttons = [...document.querySelectorAll(".product-txt__basket")];
+  getBagButtons() {
+    let buttons = [...document.querySelectorAll(".product-txt__basket")];
+    buttonsDOM = buttons;
 
     buttons.forEach(button => {
-      let id = parseInt(button.dataset.id);
+      let id = button.dataset.id;
       let inCart = cart.find(item => item.id === id);
 
       if (inCart) {
-        button.innerText = "Dodano";
+        button.innerText = "In Cart";
         button.disabled = true;
-      } else {
-        button.addEventListener("click", e => {
-          e.target.innerText = "dodano";
-          e.target.disabled = true;
-
-          let carItem = { ...Storage.getProduct(id), amount: 1 };
-
-          cart = [...cart, carItem];
-
-          Storage.saveCart(cart);
-          this.setCartValues(cart);
-          this.addCartItem(carItem);
-          this.showCart();
-        });
       }
+      button.addEventListener("click", event => {
+        event.target.innerText = "In Cart";
+        event.target.disabled = true;
+
+        let cartItem = { ...Storage.getProduct(id), amount: 1 };
+        cart = [...cart, cartItem];
+        Storage.saveCart(cart);
+
+        this.setCartValues(cart);
+        this.addCartItem(cartItem);
+      });
     });
   }
-
   setCartValues(cart) {
-    let tempTotal = 0,
-      itemsTotal = 0;
-
+    let tempTotal = 0;
+    let itemsTotal = 0;
     cart.map(item => {
       tempTotal += item.price * item.amount;
       itemsTotal += item.amount;
     });
-
-    total.innerText = parseFloat(tempTotal);
-    basket.innerText = parseFloat(itemsTotal);
+    cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
+    cartItems.innerText = itemsTotal;
   }
 
   addCartItem(item) {
@@ -96,52 +88,48 @@ class UI {
         <div class="cart__text--price">
           <span class="cart--price">Cena: <strong>${item.price}</strong> pln</span>
           <div class="cart--count">
-            <input type="text" class="input__count" value="${item.amount}" data-id=${item.id}> szt.
+            <input type="number" name="counter" class="input__count" min="1" max="100" value="1"> szt.
           </div>
         </div>
       </div>
       <div class="cart__del">
-        <button class="btn__remove" data-id=${item.id}><i class="fas fa-trash-alt"></i></button>
+      <button class="btn__remove" data-id=${item.id}>remove</button>
       </div>
     `;
     cartContent.appendChild(div);
   }
 
-  showCart() {
-    cartHTML.classList.add("showCart");
+  setupAPP() {
+    cart = Storage.getCart();
+    this.setCartValues(cart);
+    this.populateCart(cart);
   }
-
-  showItemInCart(cart) {
+  populateCart(cart) {
     cart.forEach(item => this.addCartItem(item));
   }
 
-  cardOperations(cart) {
-    cartContent.addEventListener("click", e => {
-      if (e.target.classList.contains("btn__remove")) {
-        let id = parseFloat(e.target.dataset.id);
-        cartContent.removeChild(e.target.parentElement.parentElement);
-        cart = cart.filter(item => item.id !== id);
-        Storage.saveCart(cart);
-      }
-    });
+  cartLogic() {
+    cartContent.addEventListener("click", event => {
+      if (event.target.classList.contains("btn__remove")) {
+        let removeItem = event.target;
+        let id = removeItem.dataset.id;
+        cartContent.removeChild(removeItem.parentElement.parentElement);
 
-    let inputCount = document.querySelectorAll(".input__count");
-    inputCount.forEach(item => {
-      item.addEventListener("change", e => {
-        let id = parseFloat(e.target.dataset.id);
-        let tempItem = cart.find(item => item.id == id);
-        tempItem.amount = e.target.value;
-        Storage.saveCart(cart);
-        this.setCartValues(cart);
-      });
+        this.removeItem(id);
+      }
     });
   }
 
-  app() {
-    cart = Storage.getCart();
+  removeItem(id) {
+    cart = cart.filter(item => item.id !== id);
     this.setCartValues(cart);
-    this.showItemInCart(cart);
-    this.cardOperations(cart);
+    Storage.saveCart(cart);
+    let button = this.getSingleButton(id);
+    button.disabled = false;
+    button.innerHTML = `<i class="fas fa-shopping-cart"></i>add to bag`;
+  }
+  getSingleButton(id) {
+    return buttonsDOM.find(button => button.dataset.id === id);
   }
 }
 
@@ -166,12 +154,16 @@ class Storage {
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
+  ui.setupAPP();
 
-  ui.app();
-
-  products.getProducts().then(products => {
-    ui.displayProducts(products);
-    Storage.saveProducts(products);
-    ui.getButtons();
-  });
+  products
+    .getProducts()
+    .then(products => {
+      ui.displayProducts(products);
+      Storage.saveProducts(products);
+    })
+    .then(() => {
+      ui.getBagButtons();
+      ui.cartLogic();
+    });
 });
