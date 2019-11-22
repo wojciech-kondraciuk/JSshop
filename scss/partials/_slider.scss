@@ -1,0 +1,60 @@
+.slide_wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  margin-bottom: 5px;
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .4s;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+
+    .slide_text {
+      @include centerer;
+      text-align: center;
+
+      .slide-title {
+        @include font(72px, $basic-text-color, 900, 68px);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .slide-name {
+        @include font(30px, $bright-text-color, 300);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+    }
+  }
+
+  .slide_nav {
+    @include centerer;
+    width: 100%;
+    @include flexbox;
+    @include justify-content(space-between);
+
+    &-left,
+    &-right {
+      @include font(24px, $bright-text-color, 400);
+      background: none;
+      padding: 40px;
+      border: none;
+      cursor: pointer;
+      border: 1px solid $bright-text-color;
+      transition: .4s;
+
+      &:hover {
+        background: $basic-layout-color;
+      }
+    }
+
+    &-right {
+      left: auto;
+      right: 0;
+    }
+  }
+}

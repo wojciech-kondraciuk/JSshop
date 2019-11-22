@@ -1,0 +1,7 @@
+.boxes {
+  @include flexbox;
+
+  .boxes_img {
+    @include size(100%, auto);
+  }
+}

@@ -1,22 +1,12 @@
 .cart {
-  @include position(absolute, $top: 120px, $right: 0);
+  @include position(fixed, $top: 120px, $right: 0);
   @include size(350px, auto);
   padding: 10px;
   box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.2);
-
-  .cross {
-    @include font(14px, $bright-text-color, 400, 25px);
-    @include position(absolute, $top: -15px, $left: -15px);
-    cursor: pointer;
-    background: $smallButtons;
-    @include size(25px, 25px);
-    text-align: center;
-    border-radius: 50%;
-
-    &:hover {
-      background: $basic-text-color;
-    }
-  }
+  opacity: 0;
+  transition: .4s;
+  z-index: 99;
+  background: $header-bg-color;
 
   &__list {
     text-align: left;
@@ -64,19 +54,38 @@
 
       .cart__del {
         text-align: center;
-
+        position: relative;
+        flex-basis: 30px;
 
         .btn__remove {
           @include size(20px, 25px);
-          background-color: none;
-          background-image: url(../../img/del.png);
-          background-position: center center;
-          background-repeat: no-repeat;
           cursor: pointer;
+          opacity: .3;
 
           &:hover {
-            opacity: .5;
+            opacity: 1;
           }
+
+          &:before,
+          &:after {
+            position: absolute;
+            left: 15px;
+            content: ' ';
+            height: 33px;
+            width: 2px;
+            background-color: $smallButtons;
+          }
+
+          &:before {
+            transform: rotate(45deg);
+          }
+
+          &:after {
+            transform: rotate(-45deg);
+          }
+
+
+
         }
 
       }
@@ -106,11 +115,22 @@
       text-transform: uppercase;
     }
   }
-
-
 }
 
-.header .basket.show .cart {
-  background: red;
+.cross {
+  @include font(14px, $bright-text-color, 400, 25px);
+  @include position(absolute, $top: -15px, $left: -15px);
+  cursor: pointer;
+  background: $smallButtons;
+  @include size(25px, 25px);
+  text-align: center;
+  border-radius: 50%;
 
+  &:hover {
+    background: $basic-text-color;
+  }
+}
+
+.cart.show {
+  opacity: 1;
 }

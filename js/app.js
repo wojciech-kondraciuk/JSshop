@@ -6,9 +6,16 @@ const cartTotal = document.querySelector(".cart__sum");
 const cartContent = document.querySelector(".cart__list");
 const productsDOM = document.querySelector(".listing");
 const closeCart = document.querySelector(".cross");
+const buyBTN = document.querySelector(".cart__buy");
+const cartAll = document.querySelector(".cart");
 
 let cart = [];
 let buttonsDOM = [];
+
+// Feature test localStorage
+if (!window.localStorage) {
+  alert("localStorage does not exist, you can't shop");
+}
 
 class Products {
   async getProducts() {
@@ -43,11 +50,13 @@ class UI {
     productsDOM.innerHTML = result;
   }
 
-  displayModal = warning => {
+  displayModal = (warning, name) => {
     let md = `
       <div class="modal-content">
-        <span class="close-button">×</span>
-        <h1>${warning}</h1>
+        <span class="cross cross-modal"><i class="fas fa-times"></i></span>
+        <h1 class="modal-header">${warning}</h1>
+        <h2 class="modal-title">${name}</h2>
+        <button class="modal-btn">Close</button>
       </div>
   `;
 
@@ -80,9 +89,9 @@ class UI {
         e.target.innerText = "In Cart";
         e.target.disabled = true;
 
-        this.displayModal("dodano do koszyka");
-
         let cartItem = { ...Storage.getProduct(id), amount: 1 };
+        this.displayModal("Added to cart:", cartItem.title);
+
         cart = [...cart, cartItem];
         Storage.saveCart(cart);
 
@@ -144,15 +153,18 @@ class UI {
   showHideCart() {
     cartBtn.addEventListener("click", () => {
       if (parseFloat(cartItems.innerText) > 0) {
-        cartBtn.classList.toggle("show");
+        cartAll.classList.toggle("show");
       } else {
-        this.displayModal("Koszyk jest pusty");
+        this.displayModal("Your shopping cart is empty", ":(");
       }
     });
     closeCart.addEventListener("click", () => {
-      if (cartBtn.classList.contains("show")) {
-        cartBtn.classList.remove("show");
+      if (cartAll.classList.contains("show")) {
+        cartAll.classList.remove("show");
       }
+    });
+    buyBTN.addEventListener("click", () => {
+      this.displayModal("Shopping soon", ":)");
     });
   }
 
