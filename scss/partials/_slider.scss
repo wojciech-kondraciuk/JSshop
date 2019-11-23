@@ -1,31 +1,28 @@
 .slide_wrapper {
-  position: relative;
+  @include position(relative, $top: 0, $left: 0);
+  @include size(auto, 100vh);
+  @include margin-padding(bottom, 5px, null, null);
   overflow: hidden;
-  height: 100vh;
-  margin-bottom: 5px;
 
   .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: .4s;
-    width: 100%;
-    height: 100vh;
+    @include position(absolute, $top: 0, $left: 0);
+    @include transition(.4s);
+    @include size(100%, 100vh);
     background-size: cover;
 
     .slide_text {
       @include centerer;
+      top: 70%;
       text-align: center;
+      text-transform: uppercase;
 
       .slide-title {
-        @include font(72px, $basic-text-color, 900, 68px);
-        text-transform: uppercase;
-        margin-bottom: 20px;
+        @include font(72px, null, 900, 68px);
+        @include margin-padding(bottom, 20px, null, null);
       }
 
       .slide-name {
         @include font(30px, $bright-text-color, 300);
-        text-transform: uppercase;
         letter-spacing: 5px;
       }
     }
@@ -33,22 +30,22 @@
 
   .slide_nav {
     @include centerer;
-    width: 100%;
+    @include size(100%, auto);
     @include flexbox;
     @include justify-content(space-between);
 
     &-left,
     &-right {
       @include font(24px, $bright-text-color, 400);
-      background: none;
-      padding: 40px;
+      @include margin-padding(null, null, all, 40px);
+      @include transition(.4s);
       border: none;
       cursor: pointer;
+      background: none;
       border: 1px solid $bright-text-color;
-      transition: .4s;
 
       &:hover {
-        background: $basic-layout-color;
+        background-color: $basic-layout-color;
       }
     }
 

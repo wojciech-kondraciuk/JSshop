@@ -2,20 +2,18 @@
   @include flexbox;
   @include justify-content(space-between);
   @include position(fixed, $top: 0, $left: 0);
-  width: 100%;
-  background: $header-bg-color;
-  box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.1);
+  @include size(100%, auto);
+  @include box-shadow(0, 5px, 5px, rgba(50, 50, 50, 0.1));
+  @include margin-padding(null, null, all, 10px 20px);
+  background-color: $header-bg-color;
   z-index: 999;
-  padding: 10px 20px;
 
   .logo {
-    cursor: pointer;
     @include size(198px, 60px);
-    background-image: url(../../img/logo.png);
-    background-repeat: no-repeat;
-    background-position: top left;
+    @include background-image('../../img/logo.png');
+    @include flex(1);
     text-indent: -9999em;
-    flex: 1;
+    cursor: pointer;
   }
 
   .nav {
@@ -23,57 +21,54 @@
     @include position(relative, $top: 0, $left: 0);
     @include align-items(center);
     @include justify-content(center);
-    flex: 5;
+    @include flex(5);
 
     &__sub {
       display: none;
     }
 
     &__item {
-      margin: 0 1px;
+      @include margin-padding(all, 0px 1px, null, null);
       text-align: center;
     }
 
     &__link {
-      text-decoration: none;
       @include font(18px, $basic-text-color);
-      padding: 30px 20px;
-      transition: .3s;
+      @include margin-padding(null, null, all, 30px 20px);
+      @include transition(.3s ease);
+      text-decoration: none;
 
       &.active,
       &:hover {
-        background: $basic-layout-color;
-        color: #ffffff;
-
+        background-color: $basic-layout-color;
+        color: $bright-text-color
       }
     }
   }
 
   .basket {
-    cursor: pointer;
     @include flexbox;
-    @include font(26px, $basic-header-color, 400);
+    @include font(26px, null);
     @include align-items(center);
     @include justify-content(flex-end);
-    flex: 1;
+    @include flex(1);
+    cursor: pointer;
 
     &__icon {
-      position: relative;
+      @include position(relative, $top: 0, $left: 0);
     }
 
     &__item {
       @include position(absolute, $top: -13px, $left: -18px);
-      width: 25px;
-      height: 25px;
-      background: $basic-layout-color;
-      @include font(14px, #ffffff, 400, 25px);
+      @include size(25px, 25px);
+      @include font(14px, $bright-text-color, null, 25px);
+      background-color: $basic-layout-color;
       text-align: center;
-      border-radius: 100%;
+      border-radius: 50%;
     }
 
     &__name {
-      @include font(16px, $basic-header-color, 400);
-      margin-left: 3px;
+      @include font(16px, $basic-header-color);
     }
 
     &:hover {
@@ -85,14 +80,15 @@
 .social {
   @include flexbox;
   @include align-items(center);
-  @include font(22px, $basic-text-color, 400);
+  @include font(22px, null);
   @include justify-content(center);
-  flex: 1;
+  @include flex(1);
 
   i {
-    margin: 0 5px;
+    @include margin-padding(all, 0px 5px, null, null);
+    @include transition(.3s ease);
     cursor: pointer;
-    transition: .3s;
+
 
     &:hover {
       color: $basic-layout-color;

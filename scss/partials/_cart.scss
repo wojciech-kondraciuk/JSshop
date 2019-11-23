@@ -1,22 +1,21 @@
 .cart {
   @include position(fixed, $top: 120px, $right: 0);
   @include size(350px, auto);
-  padding: 10px;
-  box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.2);
+  @include margin-padding(null, null, all, 10px);
+  @include box-shadow(0, 0px, 5px, rgba(50, 50, 50, 0.2));
+  @include transition(.4s);
+  background-color: $header-bg-color;
   opacity: 0;
-  transition: .4s;
   z-index: 99;
-  background: $header-bg-color;
 
-  &__list {
+
+  .cart__list {
     text-align: left;
 
     .cart__item {
       @include flexbox;
       @include justify-content(space-between);
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-
+      @include margin-padding(bottom, 10px, bottom, 10px);
 
       .cart__img {
         text-align: center;
@@ -27,22 +26,27 @@
       }
 
       .cart__text {
-        flex-basis: 180px;
         @include flexbox;
         @include flex-direction(column);
         @include justify-content(space-between);
+        flex-basis: 180px;
 
 
         &--name {
-          @include font(16px, $basic-text-color, 900, 17px);
+          @include font(16px, null, 900, 17px);
         }
 
         &--price {
           @include flexbox;
           @include justify-content(space-between);
-          @include font(16px, $basic-text-color, 800);
+          @include font(16px, null, 900);
+
+          .cart--price {
+            @include font(14px, null);
+          }
 
           .cart--count {
+            @include font(14px, null);
 
             .input__count {
               @include size(50px, auto);
@@ -53,8 +57,8 @@
       }
 
       .cart__del {
+        @include position(relative, $top: 0, $left: 0);
         text-align: center;
-        position: relative;
         flex-basis: 30px;
 
         .btn__remove {
@@ -68,12 +72,10 @@
 
           &:before,
           &:after {
-            position: absolute;
-            left: 15px;
-            content: ' ';
-            height: 33px;
-            width: 2px;
+            @include position(absolute, $top: 10px, $left: 0px);
+            @include size(33px, 2px);
             background-color: $smallButtons;
+            content: '';
           }
 
           &:before {
@@ -84,34 +86,28 @@
             transform: rotate(-45deg);
           }
 
-
-
         }
-
       }
-
     }
-
   }
 
-  &__total {
+  .cart__total {
     @include flexbox;
     @include flex-direction(column);
-    text-align: center;
-    background: $basic-layout-color;
-    text-align: center;
+    @include margin-padding(null, null, all, 20px);
     @include font(18px, $bright-text-color, 900);
-    padding: 20px;
+    text-align: center;
+    background-color: $basic-layout-color;
 
     .cart__pay {
-      padding: 10px;
+      @include margin-padding(null, null, all, 10px);
     }
 
     .cart__buy {
-      background: $smallButtons;
+      @include font(14px, $bright-text-color);
+      @include margin-padding(null, null, all, 10px);
+      background-color: $smallButtons;
       cursor: pointer;
-      padding: 10px;
-      @include font(14px, $bright-text-color, 900);
       text-transform: uppercase;
     }
   }
@@ -120,14 +116,14 @@
 .cross {
   @include font(14px, $bright-text-color, 400, 25px);
   @include position(absolute, $top: -15px, $left: -15px);
-  cursor: pointer;
-  background: $smallButtons;
   @include size(25px, 25px);
+  cursor: pointer;
+  background-color: $smallButtons;
   text-align: center;
   border-radius: 50%;
 
   &:hover {
-    background: $basic-text-color;
+    background-size: null;
   }
 }
 

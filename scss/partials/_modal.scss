@@ -9,11 +9,10 @@
   z-index: 9999;
 
   .modal-content {
-    @include position(absolute, $top: 50%, $left: 50%);
+    @include centerer;
     @include size(24rem, auto);
-    transform: translate(-50%, -50%);
+    @include margin-padding(null, null, all, 20px);
     background-color: $bright-text-color;
-    padding: 1rem 1.5rem;
     text-align: center;
 
     .cross-modal {
@@ -22,24 +21,24 @@
     }
 
     .modal-header {
-      @include font(26px, $basic-text-color, 400);
+      @include font(26px, null);
     }
 
     .modal-title {
       @include font(16px, $basic-layout-color, 900);
-      margin: 20px 0px;
+      @include margin-padding(all, 20px 0, null, null);
     }
 
     .modal-btn {
-      @include font(16px, $bright-text-color, 400);
-      background: $smallButtons;
-      border: none;
-      padding: 10px 20px;
+      @include font(16px, $bright-text-color);
+      @include margin-padding(null, null, all, 10px 20px);
+      @include transition(.4s);
       cursor: pointer;
-      transition: .4s;
+      background-color: $smallButtons;
+      border: none;
 
       &:hover {
-        background: $basic-layout-color;
+        background-color: $basic-layout-color;
       }
     }
   }
