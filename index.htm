@@ -53,33 +53,73 @@
         <i class="fas fa-shopping-basket"></i>
         <div class="basket__item">0</div>
       </div>
-      <div class="basket__name">koszyk</div>
+      <div class="basket__name">&nbsp;basket</div>
     </div>
   </header>
 
   <div class="cart">
     <span class="cross"><i class="fas fa-times"></i></span>
-    <div class="cart__list">
-      <div class="cart__item">
-        <div class="cart__item--img">obrazek</div>
-        <div class="cart__item--text">
-          <h6 class="item--name">name</h6>
-          <span class="item-price">20</span>
-          <button class="item--remove">delete</button>
+    <div class="cart__list"></div>
+    <div class="cart__total">
+      <div class="cart__pay">To pay: <span class="cart__sum">0</span> pln</div>
+      <div class="cart__buy">Buy now</div>
+    </div>
+  </div>
+
+  <div class="slide_wrapper">
+    <div class="slide" style="background-image: url('./img/banner1.jpg');">
+      <div class="slide_text">
+        <h1 class="slide-title">The book is a friend who never cheats</h1>
+        <h2 class="slide-name">book store</h2>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('./img/banner2.jpg');">
+      <div class="slide_text">
+        <h1 class="slide-title">Book store</h1>
+      </div>
+    </div>
+    <div class="slide_nav">
+      <button class="slide_nav-left"><i class="fas fa-caret-left"></i></button>
+      <button class="slide_nav-right"><i class="fas fa-caret-right"></i></button>
+    </div>
+  </div>
+
+  <div class="boxes">
+    <div class="boxes_cont">
+      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box1.jpg" alt=""></a>
+      <div class="boxes_bg">
+        <div class="boxes_text">
+          <span class="boxes-title">new arrivals</span>
+          <h6 class="boxes-name">childrens</h6>
         </div>
-        <div class="cart__item--count">
-          <input type="number" name="counter" class="item--count" min="1" max="100" value="1">
+      </div>
+    </div>
+    <div class="boxes_cont">
+      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box1.jpg" alt=""></a>
+      <div class="boxes_bg">
+        <div class="boxes_text">
+          <span class="boxes-title">new arrivals</span>
+          <h6 class="boxes-name">childrens</h6>
+        </div>
+      </div>
+    </div>
+    <div class="boxes_cont">
+      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box1.jpg" alt=""></a>
+      <div class="boxes_bg">
+        <div class="boxes_text">
+          <span class="boxes-title">new arrivals</span>
+          <h6 class="boxes-name">childrens</h6>
         </div>
       </div>
     </div>
   </div>
 
-  test
+  <div class="listing"></div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="module" src="js/app.js"></script>
   <script type="module" src="js/scripts.js"></script>
 </body>
 

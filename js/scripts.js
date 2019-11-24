@@ -1,161 +1,43 @@
-const listing = document.createElement("div");
-const popup = document.createElement("div");
-const modal = document.querySelector(".modal");
+//slider
+const left = document.querySelector(".slide_nav-left");
+const right = document.querySelector(".slide_nav-right");
+let index = 1;
 
-("use strict");
+const showDivs = n => {
+  let slides = document.querySelectorAll(".slide");
 
-let cart = localStorage.getItem("cart")
-  ? JSON.parse(localStorage.getItem("cart"))
-  : [];
+  n > slides.length ? (index = 1) : null;
 
-class Products {
-  async getAllProducts() {
-    try {
-      let response = await fetch("products.json");
-      return await response.json();
-    } catch (error) {
-      console.error(error);
-    }
+  n < 1 ? (index = slides.length) : null;
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.opacity = "0";
   }
-}
+  slides[index - 1].style.opacity = "1";
 
-class UI {
-  displayProducts(products) {
-    let output;
-    products.forEach(item => {
-      output += `
-        <div class="product">
-          <a href="#" class="product__link">
-            <img src="#" alt="${item.title}" class="product__img">
-          </a>
-          <div class="product-txt">
-            <h6 class="product-txt__header">${item.name}</h6>
-            <button data-id="${item.id}" class="product-txt__basket">
-              <i class="fas fa-shopping-basket"></i> Add to cart
-            </button>
-            <div class="product-txt__price">${item.id}</div>
-          </div>
-        </div>
-      `;
-    });
-    listing.innerHTML = output;
-    listing.classList.add("listing");
-    document.body.appendChild(listing);
+  if (slides.length == 1) {
+    right.style.opacity = "0";
+    left.style.opacity = "0";
+  } else {
+    right.style.opacity = "1";
+    left.style.opacity = "1";
   }
+};
 
-  displayModal = warning => {
-    let md = `
-      <div class="modal-content">
-        <span class="close-button">×</span>
-        <h1>${warning}</h1>
-      </div>
-  `;
+const nextSlide = n => {
+  showDivs((index += n));
+};
 
-    popup.classList.add("modal");
-    popup.innerHTML = md;
-    document.body.appendChild(popup);
-    const modal = document.querySelector(".modal");
-    modal.classList.add("show-modal");
+showDivs(index);
 
-    if (modal.classList.contains("show-modal")) {
-      modal.addEventListener("click", () => {
-        modal.classList.remove("show-modal");
-      });
-    }
-  };
-
-  getButtons() {
-    const buttons = [...document.querySelectorAll(".product-txt__basket")];
-    buttons.forEach(button => {
-      let id = parseInt(button.dataset.id);
-
-      button.addEventListener("click", e => {
-        let cartItem = { ...Storage.getProduct(id), amount: 1 };
-        cart = [...cart, cartItem];
-
-        const unique = Array.from(new Set(cart.map(a => a.id))).map(id =>
-          cart.find(a => a.id === id)
-        );
-
-        if (unique.includes(cartItem) == false) {
-          this.displayModal("powtórka");
-        } else {
-          this.displayModal("dodano");
-        }
-
-        Storage.saveCart(unique);
-        this.setCartValues(cart);
-        this.addCartItem(cartItem);
-        this.showCart();
-      });
-    });
-  }
-  setCartValues(cart) {
-    let tempTotal = 0,
-      itemsTotal = 0;
-
-    cart.map(item => {
-      tempTotal += item.price * item.amount;
-      itemsTotal += item.amount;
-    });
-  }
-  addCartItem(item) {
-    const div = document.createElement("div");
-    div.innerHTML = `tutaj miniaturki karty`;
-  }
-  showCart() {
-    let show = "pokazywanie i ukrywanie kary";
-  }
-  hideCart() {
-    let show = " ukrywanie kary";
-  }
-  setupApp() {
-    this.setCartValues(cart);
-  }
-}
-
-class Storage {
-  static saveProducts(products) {
-    localStorage.setItem("products", JSON.stringify(products));
-  }
-  static getProduct(id) {
-    let products = JSON.parse(localStorage.getItem("products"));
-    return products.find(product => product.id === id);
-  }
-  static saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const ui = new UI();
-  const products = new Products();
-
-  ui.setupApp();
-
-  products.getAllProducts().then(products => {
-    ui.displayProducts(products);
-    Storage.saveProducts(products);
-    ui.getButtons();
-  });
+left.addEventListener("click", () => {
+  nextSlide(-1);
 });
 
-// const toggleModal = () => {
-//   modal.classList.toggle("show-modal");
-// };
+right.addEventListener("click", () => {
+  nextSlide(+1);
+});
 
-// const windowOnClick = e => {
-//   if (e.target === modal) {
-//     toggleModal();
-//   }
-// };
-
-// window.addEventListener("click", windowOnClick);
-
-// const modal = document.querySelector(".modal");
-
-// if (document.body.classList.contains("show-modal")) {
-//   modal.classList.remov("show-modal");
-// } else {
-//   modal.classList.add("show-modal");
-// }
+// setInterval(function() {
+//   nextSlide(+1);
+// }, 4000);

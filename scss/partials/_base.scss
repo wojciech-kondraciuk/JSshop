@@ -1,9 +1,5 @@
 body {
-    background: #ffffff;
-    font-family: 'Lato', sans-serif;
-}
-
-.container {
-    width: 1200px;
-    margin: 0 auto;
+  font-family: $font-primary;
+  @include font(16px, $basic-text-color, 400, normal);
+  background-color: $basic-background;
 }

@@ -1,0 +1,51 @@
+.boxes {
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(space-around);
+
+  .boxes_cont {
+    @include position(relative, $top: 0, $left: 0);
+    @include size(33%, auto);
+    min-height: 392px;
+    overflow: hidden;
+
+    .boxes_img {
+      @include size(100%, auto);
+    }
+
+    .boxes_bg {
+      @include position(absolute, $top: 0, $left: 0);
+      @include size(100%, 100%);
+      @include transition(.4s);
+      background-color: rgba(0, 0, 0, .8);
+
+      .boxes_text {
+        @include centerer;
+        @include font(24px, $bright-text-color);
+        text-align: center;
+
+        .boxes-title {
+          @include font(12px, null, 300);
+          text-transform: uppercase;
+          letter-spacing: 3px;
+        }
+
+        .boxes-name {
+          @include font(38px, null, 800);
+          letter-spacing: 2px;
+        }
+      }
+
+    }
+
+    &:hover .boxes_bg {
+      top: -400px;
+    }
+
+  }
+
+
+
+
+
+}

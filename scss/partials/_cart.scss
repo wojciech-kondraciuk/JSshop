@@ -1,6 +1,132 @@
 .cart {
-  @include position(absolute, $top: 80px, $right: 0);
-  @include size(500px, 100vh);
-  background: green;
+  @include position(fixed, $top: 120px, $right: 0);
+  @include size(350px, auto);
+  @include margin-padding(null, null, all, 10px);
+  @include box-shadow(0, 0px, 5px, rgba(50, 50, 50, 0.2));
+  @include transition(.4s);
+  background-color: $header-bg-color;
+  opacity: 0;
+  z-index: 99;
 
+
+  .cart__list {
+    text-align: left;
+
+    .cart__item {
+      @include flexbox;
+      @include justify-content(space-between);
+      @include margin-padding(bottom, 10px, bottom, 10px);
+
+      .cart__img {
+        text-align: center;
+
+        .img {
+          @include size(100px, auto);
+        }
+      }
+
+      .cart__text {
+        @include flexbox;
+        @include flex-direction(column);
+        @include justify-content(space-between);
+        flex-basis: 180px;
+
+
+        &--name {
+          @include font(16px, null, 900, 17px);
+        }
+
+        &--price {
+          @include flexbox;
+          @include justify-content(space-between);
+          @include font(16px, null, 900);
+
+          .cart--price {
+            @include font(14px, null);
+          }
+
+          .cart--count {
+            @include font(14px, null);
+
+            .input__count {
+              @include size(50px, auto);
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .cart__del {
+        @include position(relative, $top: 0, $left: 0);
+        text-align: center;
+        flex-basis: 30px;
+
+        .btn__remove {
+          @include size(20px, 25px);
+          cursor: pointer;
+          opacity: .3;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &:before,
+          &:after {
+            @include position(absolute, $top: 10px, $left: 0px);
+            @include size(33px, 2px);
+            background-color: $smallButtons;
+            content: '';
+          }
+
+          &:before {
+            transform: rotate(45deg);
+          }
+
+          &:after {
+            transform: rotate(-45deg);
+          }
+
+        }
+      }
+    }
+  }
+
+  .cart__total {
+    @include flexbox;
+    @include flex-direction(column);
+    @include margin-padding(null, null, all, 20px);
+    @include font(18px, $bright-text-color, 900);
+    text-align: center;
+    background-color: $basic-layout-color;
+
+    .cart__pay {
+      @include margin-padding(null, null, all, 10px);
+    }
+
+    .cart__buy {
+      @include font(14px, $bright-text-color);
+      @include margin-padding(null, null, all, 10px);
+      background-color: $smallButtons;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.cross {
+  @include font(14px, $bright-text-color, 400, 25px);
+  @include position(absolute, $top: -15px, $left: -15px);
+  @include size(25px, 25px);
+  cursor: pointer;
+  background-color: $smallButtons;
+  text-align: center;
+  border-radius: 50%;
+
+  &:hover {
+    background-size: null;
+  }
+}
+
+.cart.show {
+  opacity: 1;
 }
