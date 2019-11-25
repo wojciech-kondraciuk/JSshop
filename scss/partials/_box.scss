@@ -3,11 +3,18 @@
   @include align-items(center);
   @include justify-content(space-around);
 
+  @include media-queries(tablet, max) {
+    @include flex-direction(column);
+  }
+
   .boxes_cont {
     @include position(relative, $top: 0, $left: 0);
     @include size(33%, auto);
-    min-height: 392px;
     overflow: hidden;
+
+    @include media-queries(tablet, max) {
+      @include size(100%, auto);
+    }
 
     .boxes_img {
       @include size(100%, auto);
@@ -41,11 +48,5 @@
     &:hover .boxes_bg {
       top: -400px;
     }
-
   }
-
-
-
-
-
 }

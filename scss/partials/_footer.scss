@@ -1,0 +1,7 @@
+.footer {
+  flex-basis: 100%;
+  text-align: center;
+  @include font(12px, $basic-background);
+  background-color: $footer-small-color;
+  @include margin-padding(null, null, all, 20px 0px);
+}

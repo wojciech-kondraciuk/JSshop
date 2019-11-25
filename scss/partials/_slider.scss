@@ -1,14 +1,19 @@
 .slide_wrapper {
   @include position(relative, $top: 0, $left: 0);
-  @include size(auto, 100vh);
   @include margin-padding(bottom, 5px, null, null);
+  @include size(100%, 0);
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-top: 50%;
   overflow: hidden;
 
   .slide {
     @include position(absolute, $top: 0, $left: 0);
     @include transition(.4s);
-    @include size(100%, 100vh);
-    background-size: cover;
+    @include size(100%, 0);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 50%;
 
     .slide_text {
       @include centerer;
@@ -16,14 +21,30 @@
       text-align: center;
       text-transform: uppercase;
 
+      @include media-queries(laptop_L, max) {
+        top: 50%;
+      }
+
       .slide-title {
-        @include font(72px, null, 900, 68px);
+        @include font(72px, #000000, 900, 68px);
         @include margin-padding(bottom, 20px, null, null);
+
+        @include media-queries(laptop_L, max) {
+          @include font(36px, null, null, normal);
+        }
+
+        @include media-queries(tablet, max) {
+          @include font(14px, null, null, null);
+        }
       }
 
       .slide-name {
         @include font(30px, $bright-text-color, 300);
         letter-spacing: 5px;
+
+        @include media-queries(mobile_L, max) {
+          @include font(12px, null, null, null);
+        }
       }
     }
   }
@@ -43,6 +64,12 @@
       cursor: pointer;
       background: none;
       border: 1px solid $bright-text-color;
+
+      @include media-queries(laptop, max) {
+        @include margin-padding(null, null, all, 3px);
+        @include font(14px, null, null);
+        @include size(25px, 25px);
+      }
 
       &:hover {
         background-color: $basic-layout-color;

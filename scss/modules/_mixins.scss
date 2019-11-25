@@ -1,14 +1,15 @@
 //rwd
 
-$breakpoints: ("phone": 460px,
-    "telefon": 640px,
-    "tablet": 800px,
-    "tablet-wide": 1024px,
-    "desktop": 1200px,
-    "desktop-wide": 1440px);
+$breakpoints: ("mobile_S": 320px,
+    "mobile_M": 375px,
+    "mobile_L": 425px,
+    "tablet": 768px,
+    "laptop": 1024px,
+    "laptop_L": 1200px,
+    "laptop_XL": 1440px);
 
 
-@mixin mq($width, $type: min) {
+@mixin media-queries($width, $type: min) {
 
     @if map_has_key($breakpoints, $width) {
 
@@ -144,6 +145,7 @@ $breakpoints: ("phone": 460px,
     background-color: $background-color;
     color: $color;
     text-align: center;
+    cursor: pointer;
 }
 
 //transitions

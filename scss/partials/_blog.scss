@@ -1,0 +1,144 @@
+.blog {
+  @include margin-padding(null, null, all, 50px 0px);
+  background-color: $footer-background;
+
+  .logo {
+    @include push--auto;
+    @include margin-padding(bottom, 20px, null, null);
+    display: block;
+  }
+
+  .blog_text {
+    @include font(16px, $bright-text-color);
+    @include margin-padding(bottom, 40px, null, null);
+
+    .blog_header {
+      color: $bright-text-color;
+      @include margin-padding(all, 0 0 10px 0, null, null);
+    }
+  }
+
+  .article_content {
+    @include flexbox;
+    @include justify-content(space-between);
+    @include margin-padding(bottom, 40px, bottom, 40px);
+    border-bottom: 1px solid $date-color;
+
+    @include media-queries(tablet, max) {
+      @include flex-direction(column);
+      @include margin-padding(bottom, 20px, bottom, 0px);
+    }
+
+    .article {
+      @include font(13px, $bright-text-color);
+      @include margin-padding(bottom, 20px, null, null);
+      flex-basis: 33%;
+
+
+      &_link {
+        float: left;
+        @include margin-padding(bottom, 20px, null, null);
+
+        @include media-queries(tablet, max) {
+          float: none;
+          display: block;
+        }
+
+        .article_img {
+          @include size(100%, auto);
+        }
+      }
+
+      &_title {
+        clear: both;
+        @include font(20px, $basic-layout-color);
+        @include margin-padding(bottom, 10px, null, null);
+      }
+
+      &_txt {
+        line-height: 23px;
+        @include margin-padding(bottom, 15px, null, null);
+      }
+
+      &_date {
+        @include font(13px, $date-color);
+      }
+    }
+  }
+
+}
+
+.menu_bottom {
+  @include flexbox;
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+
+  .menu {
+    flex-basis: 25%;
+
+    @include media-queries(tablet, max) {
+      flex-basis: 50%;
+      @include margin-padding(bottom, 20px, null, null);
+    }
+
+    @include media-queries(mobile_L, max) {
+      flex-basis: 100%;
+      text-align: center;
+    }
+
+    &_header {
+      @include font(18px, $basic-layout-color, 900);
+      @include margin-padding(bottom, 20px, null, null);
+    }
+
+    &_link {
+      @include font(14px, $bright-text-color, 300);
+      @include transition(.4s);
+      @include margin-padding(bottom, 10px, null, null);
+      text-decoration: none;
+      display: block;
+
+      &:hover {
+        color: $basic-layout-color;
+      }
+    }
+
+    &-newsletter {
+
+      .form {
+        @include flexbox;
+      }
+
+      .input_news {
+        @include font(9px, $bright-text-color, 300);
+        text-transform: uppercase;
+        @include size(225px, 50px);
+        border: none;
+        background-color: $input-color;
+        @include margin-padding(bottom, 20px, left, 20px);
+
+        @include media-queries(mobile_L, max) {
+          width: 80%;
+        }
+
+        &:focus {
+          border: 1px solid $bright-text-color;
+        }
+      }
+
+      .btn_news {
+        @include font(22px, $bright-text-color);
+        @include custom-button(50px, 50px, $basic-layout-color, $bright-text-color);
+        border: none;
+
+        @include media-queries(mobile_L, max) {
+          width: 20%;
+        }
+
+        &:hover {
+          background-color: $smallButtons;
+        }
+      }
+    }
+  }
+}

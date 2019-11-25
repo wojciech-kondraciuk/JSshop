@@ -8,12 +8,8 @@
   background-color: $header-bg-color;
   z-index: 999;
 
-  .logo {
-    @include size(198px, 60px);
-    @include background-image('../../img/logo.png');
-    @include flex(1);
-    text-indent: -9999em;
-    cursor: pointer;
+  @include media-queries(laptop, max) {
+    @include flex-wrap(wrap);
   }
 
   .nav {
@@ -23,6 +19,16 @@
     @include justify-content(center);
     @include flex(5);
 
+    @include media-queries(laptop, max) {
+      flex: 1;
+      order: 4;
+      flex-basis: 100%;
+      @include flex-direction(column);
+      max-height: 0;
+      transition: max-height 0.15s ease-out;
+      overflow: hidden;
+    }
+
     &__sub {
       display: none;
     }
@@ -30,6 +36,11 @@
     &__item {
       @include margin-padding(all, 0px 1px, null, null);
       text-align: center;
+
+      @include media-queries(laptop, max) {
+        @include size(100%, auto);
+      }
+
     }
 
     &__link {
@@ -37,11 +48,26 @@
       @include margin-padding(null, null, all, 30px 20px);
       @include transition(.3s ease);
       text-decoration: none;
+      pointer-events: auto;
 
       &.active,
       &:hover {
         background-color: $basic-layout-color;
         color: $bright-text-color
+      }
+
+      @include media-queries(laptop, max) {
+        @include margin-padding(null, null, all, 10px 0px);
+        display: block;
+        text-align: left;
+
+        &.active,
+        &:hover {
+          background: none;
+          border-left: 5px solid $basic-layout-color;
+          color: $basic-text-color;
+          padding-left: 10px;
+        }
       }
     }
   }
@@ -54,14 +80,19 @@
     @include flex(1);
     cursor: pointer;
 
+    @include media-queries(laptop, max) {
+      order: 3;
+      @include flex(none);
+    }
+
     &__icon {
       @include position(relative, $top: 0, $left: 0);
     }
 
     &__item {
-      @include position(absolute, $top: -13px, $left: -18px);
-      @include size(25px, 25px);
-      @include font(14px, $bright-text-color, null, 25px);
+      @include position(absolute, $top: -6px, $left: -17px);
+      @include size(20px, 20px);
+      @include font(12px, $bright-text-color, null, 20px);
       background-color: $basic-layout-color;
       text-align: center;
       border-radius: 50%;
@@ -77,12 +108,35 @@
   }
 }
 
+.logo {
+  @include size(198px, 60px);
+  @include background-image('../../img/logo.png');
+  @include flex(1);
+  text-indent: -9999em;
+  cursor: pointer;
+  z-index: 99;
+
+  @include media-queries(laptop, max) {
+    order: 2;
+    @include flex(none);
+  }
+
+  @include media-queries(mobile_L, max) {
+    @include size(130px, 39px);
+    background-size: 100% auto;
+  }
+}
+
 .social {
   @include flexbox;
   @include align-items(center);
   @include font(22px, null);
   @include justify-content(center);
   @include flex(1);
+
+  @include media-queries(laptop, max) {
+    display: none;
+  }
 
   i {
     @include margin-padding(all, 0px 5px, null, null);
@@ -93,5 +147,18 @@
     &:hover {
       color: $basic-layout-color;
     }
+  }
+}
+
+.nav.active {
+  max-height: 100vh;
+  transition: max-height 0.25s ease-in;
+}
+
+.height {
+  @include size(100%, 80px);
+
+  @include media-queries(mobile_L, max) {
+    @include size(100%, 59px);
   }
 }

@@ -28,21 +28,19 @@ class Products {
   }
 }
 
-class UI {
+class Display {
   displayProducts(products) {
     let result = "";
     products.forEach(item => {
       result += `
       <div class="product">
         <a href="#" class="product__link">
-          <img src="#" alt="${item.title}" class="product__img">
+          <img src="${item.url}" alt="${item.title}" class="product__img">
         </a>
         <div class="product-txt">
           <h6 class="product-txt__header">${item.name}</h6>
-          <button data-id="${item.id}" class="product-txt__basket">
-            <i class="fas fa-shopping-basket"></i> Add to cart
-          </button>
-          <div class="product-txt__price">${item.id}</div>
+          <button data-id="${item.id}" class="product-txt__basket">Add to cart</button>
+          <div class="product-txt__price">${item.price} PLN</div>
         </div>
       </div>
    `;
@@ -83,11 +81,11 @@ class UI {
 
       if (inCart) {
         button.innerText = "In Cart";
-        button.disabled = true;
+        button.classList.add("in_cart");
       }
       button.addEventListener("click", e => {
         e.target.innerText = "In Cart";
-        e.target.disabled = true;
+        button.classList.add("in_cart");
 
         let cartItem = { ...Storage.getProduct(id), amount: 1 };
         this.displayModal("Added to cart:", cartItem.title);
@@ -190,7 +188,8 @@ class UI {
     this.setCartValues(cart);
     Storage.saveCart(cart);
     let button = this.getSingleButton(id);
-    button.disabled = false;
+    button.classList.remove("in_cart");
+    button.innerText = "Add to cart";
   }
   getSingleButton(id) {
     return buttonsDOM.find(button => button.dataset.id === id);
@@ -216,7 +215,7 @@ class Storage {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const ui = new UI();
+  const ui = new Display();
   const products = new Products();
   ui.setupAPP();
 

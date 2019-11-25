@@ -5,17 +5,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
-  <link href="scss/main.css" rel="stylesheet">
-  <title>mobile_first</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet" />
+  <link href="scss/main.css" rel="stylesheet" />
+  <title>Bookstore</title>
 </head>
 
 <body>
   <header class="header">
-    <a href="/" class="logo">meble</a>
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <a href="#" class="logo">meble</a>
     <ul class="nav">
       <li class="nav__item">
-        <a href="#" class="nav__link active">Products</a>
+        <a href="#products" class="nav__link">Products</a>
         <div class="nav__sub">
           <ul class="nav__sub_list">
             <li class="nav__sub--item">
@@ -34,13 +36,13 @@
         </div>
       </li>
       <li class="nav__item">
-        <a href="#" class="nav__link">About</a>
+        <a href="#new" class="nav__link">New</a>
       </li>
       <li class="nav__item">
-        <a href="#" class="nav__link">Blog</a>
+        <a href="#blog" class="nav__link">Blog</a>
       </li>
       <li class="nav__item">
-        <a href="#" class="nav__link">Contact</a>
+        <a href="#sale" class="nav__link">Sale</a>
       </li>
     </ul>
     <div class="social">
@@ -56,13 +58,17 @@
       <div class="basket__name">&nbsp;basket</div>
     </div>
   </header>
-
+  <div class="height"></div>
   <div class="cart">
-    <span class="cross"><i class="fas fa-times"></i></span>
-    <div class="cart__list"></div>
-    <div class="cart__total">
-      <div class="cart__pay">To pay: <span class="cart__sum">0</span> pln</div>
-      <div class="cart__buy">Buy now</div>
+    <div class="cart_bg">
+      <span class="cross"><i class="fas fa-times"></i></span>
+      <div class="cart__list"></div>
+      <div class="cart__total">
+        <div class="cart__pay">
+          To pay: <span class="cart__sum">0</span> pln
+        </div>
+        <div class="cart__buy">Buy now</div>
+      </div>
     </div>
   </div>
 
@@ -79,14 +85,18 @@
       </div>
     </div>
     <div class="slide_nav">
-      <button class="slide_nav-left"><i class="fas fa-caret-left"></i></button>
-      <button class="slide_nav-right"><i class="fas fa-caret-right"></i></button>
+      <button class="slide_nav-left">
+        <i class="fas fa-caret-left"></i>
+      </button>
+      <button class="slide_nav-right">
+        <i class="fas fa-caret-right"></i>
+      </button>
     </div>
   </div>
 
-  <div class="boxes">
+  <div class="boxes" id="new">
     <div class="boxes_cont">
-      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box1.jpg" alt=""></a>
+      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box1.jpg" alt="" /></a>
       <div class="boxes_bg">
         <div class="boxes_text">
           <span class="boxes-title">new arrivals</span>
@@ -95,27 +105,132 @@
       </div>
     </div>
     <div class="boxes_cont">
-      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box1.jpg" alt=""></a>
+      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box2.jpg" alt="" /></a>
       <div class="boxes_bg">
         <div class="boxes_text">
           <span class="boxes-title">new arrivals</span>
-          <h6 class="boxes-name">childrens</h6>
+          <h6 class="boxes-name">education</h6>
         </div>
       </div>
     </div>
     <div class="boxes_cont">
-      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box1.jpg" alt=""></a>
+      <a href="#" class="boxes_link"><img class="boxes_img" src="./img/box2.jpg" alt="" /></a>
       <div class="boxes_bg">
         <div class="boxes_text">
           <span class="boxes-title">new arrivals</span>
-          <h6 class="boxes-name">childrens</h6>
+          <h6 class="boxes-name">business</h6>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="listing"></div>
+  <section class="wrapper" id="products">
+    <h4>New Arrivals</h4>
+    <div class="listing"></div>
+  </section>
 
+  <section class="sale" id="sale">
+    <div class="sale_text">
+      <h6 class="sale_header">deal of day</h6>
+      <span class="sale_name">up tp 30% off</span>
+      <button class="sale_btn">shop now!</button>
+    </div>
+  </section>
+
+  <section class="blog" id="blog">
+    <div class="wrapper">
+      <a href="#" class="logo">bookstore</a>
+      <div class="blog_text">
+        <h4 class="blog_header">Lorem ipsum doloe sit</h4>
+        <div class="blog_quot">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint,
+          consectetur. Laborum maiores nisi itaque recusandae asperiores nulla
+          veniam maxime, commodi hic id voluptatum, ducimus dignissimos
+          cupiditate, fuga nesciunt aliquam reprehenderit.
+        </div>
+      </div>
+      <article class="article_content">
+        <div class="article">
+          <a href="#" class="article_link"><img src="./img/b1.jpg" alt="" class="article_img" /></a>
+          <h5 class="article_title">labore et dolore magna</h5>
+          <div class="article_txt">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Assumenda amet veniam error, velit rem adipisci perspiciatis
+            voluptates ut sequi facilis eaque sunt consequatur nemo quos
+            placeat. Natus beatae adipisci assumenda.
+          </div>
+          <span class="article_date"><i class="fas fa-clock"></i> 25/23/2019</span>
+        </div>
+        <div class="article">
+          <a href="#" class="article_link"><img src="./img/b2.jpg" alt="" class="article_img" /></a>
+          <h5 class="article_title">news</h5>
+          <div class="article_txt">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Assumenda amet veniam error, velit rem adipisci perspiciatis
+            voluptates ut sequi facilis eaque sunt consequatur nemo quos
+            placeat. Natus beatae adipisci assumenda.
+          </div>
+          <span class="article_date"><i class="fas fa-clock"></i> 25/23/2019</span>
+        </div>
+        <div class="article">
+          <a href="#" class="article_link"><img src="./img/b3.jpg" alt="" class="article_img" /></a>
+          <h5 class="article_title">best prices</h5>
+          <div class="article_txt">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Assumenda amet veniam error, velit rem adipisci perspiciatis
+            voluptates ut sequi facilis eaque sunt consequatur nemo quos
+            placeat. Natus beatae adipisci assumenda.
+          </div>
+          <span class="article_date"><i class="fas fa-clock"></i> 25/23/2019</span>
+        </div>
+      </article>
+      <div class="menu_bottom">
+        <div class="menu">
+          <h6 class="menu_header">Information</h6>
+          <a class="menu_link" href="#">specials</a>
+          <a class="menu_link" href="#">new products</a>
+          <a class="menu_link" href="#">top sellers</a>
+          <a class="menu_link" href="#">our stores</a>
+          <a class="menu_link" href="#">contact us</a>
+          <a class="menu_link" href="#">page configuration</a>
+          <a class="menu_link" href="#">sitemap</a>
+        </div>
+        <div class="menu">
+          <h6 class="menu_header">My accout</h6>
+          <a class="menu_link" href="#">my orders</a>
+          <a class="menu_link" href="#">my merchandise returns</a>
+          <a class="menu_link" href="#">my credit slips</a>
+          <a class="menu_link" href="#">my adresses</a>
+          <a class="menu_link" href="#">contact us</a>
+          <a class="menu_link" href="#">my personal info</a>
+          <a class="menu_link" href="#">my vouchers</a>
+        </div>
+        <div class="menu">
+          <h6 class="menu_header">Categories</h6>
+          <a class="menu_link" href="#">biographies</a>
+          <a class="menu_link" href="#">businesss</a>
+          <a class="menu_link" href="#">education</a>
+          <a class="menu_link" href="#">history</a>
+          <a class="menu_link" href="#">contact us</a>
+          <a class="menu_link" href="#">childrens</a>
+          <a class="menu_link" href="#">classic</a>
+        </div>
+        <div class="menu menu-newsletter">
+          <h6 class="menu_header">Newsletter</h6>
+          <form class="form" action="#">
+            <input type="text" name="newsletter" value="Enter your e-mail" class="input_news" />
+            <button type="submit" class="btn_news" disabled>
+              <i class="far fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">© 2019 All rights reserved</footer>
+  <button id="back-to-top" title="Back to top">
+    <i class="fas fa-arrow-circle-up"></i>
+  </button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

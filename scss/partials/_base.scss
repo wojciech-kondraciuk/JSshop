@@ -3,3 +3,67 @@ body {
   @include font(16px, $basic-text-color, 400, normal);
   background-color: $basic-background;
 }
+
+.wrapper {
+  @include size(1100px, auto);
+  @include push--auto();
+
+  @include media-queries(laptop_L, max) {
+    @include size(100%, auto);
+    @include margin-padding(null, null, all, 0 20px);
+  }
+}
+
+h4 {
+  @include font(28px, $basic-layout-color, 900);
+  @include margin-padding(all, 40px 0px, null, null);
+  text-align: center;
+  text-transform: uppercase;
+
+  @include media-queries(tablet, max) {
+    @include font(22px, null, null);
+    @include margin-padding(all, 20px 0px, null, null);
+  }
+}
+
+#back-to-top {
+  @include position(fixed, $right: 40px, $bottom: 40px);
+  @include size(50px, 50px);
+  @include font(38px, $bright-text-color, null, 50px);
+  @include transition(.4s);
+  z-index: 9999;
+  text-align: center;
+  background-color: $smallButtons;
+  cursor: pointer;
+  border: 0;
+  opacity: 0;
+
+  &:hover {
+    background: $basic-layout-color;
+  }
+}
+
+
+#back-to-top.show {
+  opacity: 1;
+}
+
+a {
+  pointer-events: none;
+}
+
+.hamburger {
+  @include font(30px, null, null);
+  display: none;
+  cursor: pointer;
+
+  @include media-queries(laptop, max) {
+    @include flexbox;
+    @include align-items(center);
+    order: 1;
+  }
+}
+
+.hamburger.active {
+  color: $basic-layout-color;
+}

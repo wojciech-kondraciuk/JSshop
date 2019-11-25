@@ -1,13 +1,15 @@
 .cart {
-  @include position(fixed, $top: 120px, $right: 0);
-  @include size(350px, auto);
-  @include margin-padding(null, null, all, 10px);
-  @include box-shadow(0, 0px, 5px, rgba(50, 50, 50, 0.2));
-  @include transition(.4s);
-  background-color: $header-bg-color;
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 99;
-
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
+  @include transition(.4s);
 
   .cart__list {
     text-align: left;
@@ -111,6 +113,22 @@
       text-transform: uppercase;
     }
   }
+
+}
+
+.cart_bg {
+  @include size(350px, auto);
+  @include margin-padding(null, null, all, 10px);
+  @include box-shadow(0, 0px, 5px, rgba(50, 50, 50, 0.2));
+  background-color: $header-bg-color;
+  position: absolute;
+  top: 100px;
+  right: 17px;
+
+  @include media-queries(mobile_L, max) {
+    width: 100%;
+    right: auto;
+  }
 }
 
 .cross {
@@ -122,11 +140,16 @@
   text-align: center;
   border-radius: 50%;
 
+  @include media-queries(mobile_L, max) {
+    left: 10px;
+  }
+
   &:hover {
     background-size: null;
   }
 }
 
 .cart.show {
-  opacity: 1;
+  max-height: 100vh;
+  transition: max-height 0.25s ease-in;
 }

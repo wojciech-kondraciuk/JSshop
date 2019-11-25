@@ -1,0 +1,57 @@
+.sale {
+  @include position(relative);
+  @include size(100%, 500px);
+  @include background-image('../../img/sale.jpg');
+  background-size: cover;
+
+  .sale_text {
+    @include centerer;
+    @include flexbox;
+    @include flex-direction(column);
+    text-align: center;
+  }
+
+  &_header {
+    @include font(80px, $bright-text-color, 900);
+
+    @include media-queries(tablet, max) {
+      @include font(40px, null, null);
+    }
+
+    @include media-queries(mobile_L, max) {
+      @include font(22px, null, null);
+    }
+  }
+
+  &_name {
+    @include font(26px, $bright-text-color, 300);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    @include margin-padding(bottom, 50px, null, null);
+
+    @include media-queries(tablet, max) {
+      @include font(14px, null, null);
+    }
+
+    @include media-queries(mobile_L, max) {
+      @include font(9px, null, null);
+    }
+  }
+
+  &_btn {
+    @include custom-button(null, null, $basic-layout-color, $bright-text-color);
+    @include margin-padding(null, null, all, 20px);
+    @include font(22px, $bright-text-color, 300);
+    @include transition(.4s);
+
+    @include media-queries(mobile_L, max) {
+      @include font(16px, $bright-text-color, 300);
+      @include margin-padding(null, null, all, 10px 20px);
+    }
+
+    &:hover {
+      background-color: $smallButtons;
+    }
+  }
+
+}
