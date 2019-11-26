@@ -57,7 +57,6 @@ class Display {
         <button class="modal-btn">Close</button>
       </div>
   `;
-
     popup.classList.add("modal");
     popup.innerHTML = md;
     document.body.appendChild(popup);
@@ -87,7 +86,7 @@ class Display {
         e.target.innerText = "In Cart";
         button.classList.add("in_cart");
 
-        let cartItem = { ...Storage.getProduct(id), amount: 1 };
+        let cartItem = {...Storage.getProduct(id),amount: 1};
         this.displayModal("Added to cart:", cartItem.title);
 
         cart = [...cart, cartItem];
@@ -98,6 +97,7 @@ class Display {
       });
     });
   }
+  
   setCartValues(cart) {
     let tempTotal = 0;
     let itemsTotal = 0;
@@ -106,9 +106,7 @@ class Display {
       itemsTotal += item.amount;
     });
 
-    itemsTotal > 0
-      ? cartItems.classList.add("pulse")
-      : cartItems.classList.remove("pulse");
+    itemsTotal > 0 ? cartItems.classList.add("pulse") : cartItems.classList.remove("pulse");
 
     cartTotal.innerText = parseFloat(tempTotal);
     cartItems.innerText = itemsTotal;
@@ -123,9 +121,14 @@ class Display {
           class="img">
       </div>
       <div class="cart__text">
+        <div class="cart__text--shortcut">
         <h6 class="cart__text--name">${item.name}</h6>
+         ${this.trimText(item.body, 150)}...
+        </div>
         <div class="cart__text--price">
-          <span class="cart--price">Price: <strong>${item.price}</strong> pln</span>
+          <span class="cart--price">Price: <strong>${
+            item.price
+          }</strong> pln</span>
           <div class="cart--count">
             <input type="number" class="input__count" min="1" max="100" value="${item.amount}" data-id=${item.id}> art.
           </div>
@@ -138,12 +141,17 @@ class Display {
     cartContent.appendChild(div);
   }
 
+  trimText(text, length) {
+    return text.substring(0, length);
+  }
+
   setupAPP() {
     cart = Storage.getCart();
     this.setCartValues(cart);
     this.populateCart(cart);
     this.showHideCart();
   }
+  
   populateCart(cart) {
     cart.forEach(item => this.addCartItem(item));
   }
@@ -191,6 +199,7 @@ class Display {
     button.classList.remove("in_cart");
     button.innerText = "Add to cart";
   }
+  
   getSingleButton(id) {
     return buttonsDOM.find(button => button.dataset.id === id);
   }
@@ -200,21 +209,24 @@ class Storage {
   static saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
   }
+  
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem("products"));
     return products.find(product => product.id === id);
   }
+  
   static saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
+  
   static getCart() {
-    return localStorage.getItem("cart")
-      ? JSON.parse(localStorage.getItem("cart"))
-      : [];
+    return localStorage.getItem("cart") ?
+      JSON.parse(localStorage.getItem("cart")) : [];
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+	
   const ui = new Display();
   const products = new Products();
   ui.setupAPP();

@@ -33,8 +33,12 @@
         @include justify-content(space-between);
         flex-basis: 180px;
 
+        &--shortcut {
+          @include font(12px, null, null);
+        }
 
         &--name {
+          @include margin-padding(bottom, 5px, null, null);
           @include font(16px, null, 900, 17px);
         }
 
@@ -87,7 +91,6 @@
           &:after {
             transform: rotate(-45deg);
           }
-
         }
       }
     }
@@ -113,7 +116,6 @@
       text-transform: uppercase;
     }
   }
-
 }
 
 .cart_bg {

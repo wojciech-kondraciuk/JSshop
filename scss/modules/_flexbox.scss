@@ -1,5 +1,4 @@
 // Flexbox Containers
-
 @mixin flexbox {
   display: -webkit-box;
   display: -webkit-flex;
@@ -12,8 +11,7 @@
   @include flexbox;
 }
 
-//----------------------------------
-
+//inline-flex
 @mixin inline-flex {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -26,10 +24,7 @@
   @include inline-flex;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Direction
-
 @mixin flex-direction($value: row) {
   @if $value==row-reverse {
     -webkit-box-direction: reverse;
@@ -62,10 +57,7 @@
   @include flex-direction($value);
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Wrap
-
 @mixin flex-wrap($value: nowrap) {
   // No Webkit Box fallback.
   -webkit-flex-wrap: $value;
@@ -82,10 +74,7 @@
   flex-wrap: $value;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Flow (shorthand)
-
 @mixin flex-flow($values: (row nowrap)) {
   // No Webkit Box fallback.
   -webkit-flex-flow: $values;
@@ -94,10 +83,7 @@
   flex-flow: $values;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Order
-
 @mixin order($int: 0) {
   -webkit-box-ordinal-group: $int + 1;
   -webkit-order: $int;
@@ -106,10 +92,7 @@
   order: $int;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Grow
-
 @mixin flex-grow($int: 0) {
   -webkit-box-flex: $int;
   -webkit-flex-grow: $int;
@@ -118,10 +101,7 @@
   flex-grow: $int;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Shrink
-
 @mixin flex-shrink($int: 1) {
   -webkit-flex-shrink: $int;
   -moz-flex-shrink: $int;
@@ -129,10 +109,7 @@
   flex-shrink: $int;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Basis
-
 @mixin flex-basis($value: auto) {
   -webkit-flex-basis: $value;
   -moz-flex-basis: $value;
@@ -140,10 +117,7 @@
   flex-basis: $value;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox "Flex" (shorthand)
-
 @mixin flex($fg: 1, $fs: null, $fb: null) {
 
   $fg-boxflex: $fg;
@@ -160,10 +134,7 @@
   flex: $fg $fs $fb;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Justify Content
-
 @mixin justify-content($value: flex-start) {
   @if $value==flex-start {
     -webkit-box-pack: start;
@@ -195,10 +166,7 @@
   @include justify-content($value);
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Align Items
-
 @mixin align-items($value: stretch) {
   @if $value==flex-start {
     -webkit-box-align: start;
@@ -220,10 +188,7 @@
   align-items: $value;
 }
 
-//----------------------------------
-
 // Flexbox Align Self
-
 @mixin align-self($value: auto) {
   // No Webkit Box Fallback.
   -webkit-align-self: $value;
@@ -244,10 +209,7 @@
   align-self: $value;
 }
 
-//----------------------------------------------------------------------
-
 // Flexbox Align Content
-
 @mixin align-content($value: stretch) {
 
   -webkit-align-content: $value;

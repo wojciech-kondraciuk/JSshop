@@ -1,13 +1,13 @@
 //rwd
-
-$breakpoints: ("mobile_S": 320px,
+$breakpoints: (
+	"mobile_S": 320px,
     "mobile_M": 375px,
     "mobile_L": 425px,
     "tablet": 768px,
     "laptop": 1024px,
     "laptop_L": 1200px,
-    "laptop_XL": 1440px);
-
+    "laptop_XL": 1440px
+);
 
 @mixin media-queries($width, $type: min) {
 
@@ -41,7 +41,6 @@ $breakpoints: ("mobile_S": 320px,
 }
 
 //center element
-
 @mixin centerer {
     position: absolute;
     top: 50%;
@@ -50,7 +49,6 @@ $breakpoints: ("mobile_S": 320px,
 }
 
 //calculate rem
-
 @function calculateRem($size) {
     $remSize: $size / 16px;
     @return $remSize * 1rem;
@@ -91,7 +89,6 @@ $breakpoints: ("mobile_S": 320px,
 }
 
 //box-shadow
-
 @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
     @if $inset {
         -webkit-box-shadow: inset $top $left $blur $color;
@@ -107,7 +104,6 @@ $breakpoints: ("mobile_S": 320px,
 }
 
 //background-image
-
 @mixin background-image($imgpath, $position:0 0, $repeat: no-repeat) {
     background: {
         image: url($imgpath);
@@ -115,7 +111,6 @@ $breakpoints: ("mobile_S": 320px,
         repeat: $repeat;
     }
 }
-
 
 //margin and padding
 @mixin margin-padding($m-direction, $m-amount, $p-direction, $p-amount) {
@@ -149,7 +144,6 @@ $breakpoints: ("mobile_S": 320px,
 }
 
 //transitions
-
 @mixin transition($args...) {
     -webkit-transition: $args;
     -moz-transition: $args;

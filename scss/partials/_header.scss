@@ -40,7 +40,6 @@
       @include media-queries(laptop, max) {
         @include size(100%, auto);
       }
-
     }
 
     &__link {
