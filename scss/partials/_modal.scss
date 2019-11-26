@@ -15,6 +15,10 @@
     background-color: $bright-text-color;
     text-align: center;
 
+    @include media-queries(mobile_L, max) {
+      @include size(100%, auto);
+    }
+
     .cross-modal {
       left: auto;
       right: -15px;
