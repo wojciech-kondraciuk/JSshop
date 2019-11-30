@@ -12,8 +12,9 @@ all based on localStorage
 * HTML/HTML5 (using BEM)
 * CSS/CSS3 
 * Vanilla JS with elements ES6
-* JQ (only animated)
+* JQ (only scrollTo)
 * SCSS
+* WebPack
 * Git
 
 ## Demo online
