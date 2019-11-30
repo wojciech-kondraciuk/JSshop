@@ -75,12 +75,12 @@
   .menu {
     flex-basis: 25%;
 
-    @include media-queries(tablet, max) {
+    @include media-queries(laptop, max) {
       flex-basis: 50%;
       @include margin-padding(bottom, 20px, null, null);
     }
 
-    @include media-queries(mobile_L, max) {
+    @include media-queries(tablet, max) {
       flex-basis: 100%;
       text-align: center;
     }
@@ -115,7 +115,7 @@
         background-color: $input-color;
         @include margin-padding(bottom, 20px, left, 20px);
 
-        @include media-queries(mobile_L, max) {
+        @include media-queries(tablet, max) {
           width: 80%;
         }
 
@@ -129,7 +129,7 @@
         @include custom-button(50px, 50px, $basic-layout-color, $bright-text-color);
         border: none;
 
-        @include media-queries(mobile_L, max) {
+        @include media-queries(tablet, max) {
           width: 20%;
         }
 

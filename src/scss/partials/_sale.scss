@@ -1,7 +1,7 @@
 .sale {
   @include position(relative);
   @include size(100%, 500px);
-  @include background-image('../../img/sale.jpg');
+  @include background-image('../img/sale.jpg');
   background-size: cover;
 
   .sale_text {
@@ -14,11 +14,11 @@
   &_header {
     @include font(80px, $bright-text-color, 900);
 
-    @include media-queries(tablet, max) {
+    @include media-queries(laptop, max) {
       @include font(40px, null, null);
     }
 
-    @include media-queries(mobile_L, max) {
+    @include media-queries(tablet, max) {
       @include font(22px, null, null);
     }
   }

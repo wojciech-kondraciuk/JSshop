@@ -109,7 +109,7 @@
 
 .logo {
   @include size(198px, 60px);
-  @include background-image('../../img/logo.png');
+  @include background-image('../img/logo.png');
   @include flex(1);
   text-indent: -9999em;
   cursor: pointer;

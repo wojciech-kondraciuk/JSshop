@@ -29,16 +29,28 @@
     @include justify-content(space-between);
     clear: both;
 
+    @include media-queries(laptop, max) {
+      @include flex-direction(column);
+    }
+
     .product-txt__header {
       flex-basis: 100%;
       @include font(16px, null, 300);
       @include margin-padding(bottom, 10px, null, null);
+
+      @include media-queries(laptop, max) {
+        @include order(1);
+      }
     }
 
     .product-txt__basket {
       @include custom-button(null, null, $basic-layout-color, $bright-text-color);
       @include margin-padding(null, null, all, 10px 20px);
       @include transition(.4s);
+
+      @include media-queries(laptop, max) {
+        @include order(3);
+      }
 
       &.in_cart {
         -webkit-filter: grayscale(100%);
@@ -57,6 +69,13 @@
     .product-txt__price {
       @include flexbox;
       @include align-items(center);
+
+      @include media-queries(laptop, max) {
+        @include order(2);
+        @include margin-padding(bottom, 10px, null, null);
+        font-weight: bold;
+      }
+
     }
   }
 }

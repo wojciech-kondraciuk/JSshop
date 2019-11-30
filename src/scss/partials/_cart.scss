@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   z-index: 99;
-  max-height: 0;
+  max-height: 0px;
   transition: max-height 0.15s ease-out;
   overflow: hidden;
   @include transition(.4s);
@@ -55,6 +55,8 @@
             @include font(14px, null);
 
             .input__count {
+              border: none;
+              border: 1px solid #c1c1c1;
               @include size(50px, auto);
               text-align: center;
             }
@@ -62,35 +64,18 @@
         }
       }
 
-      .cart__del {
-        @include position(relative, $top: 0, $left: 0);
+      .btn__remove {
+        @include transition(.4s);
+        background: red;
+        cursor: pointer;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
         text-align: center;
-        flex-basis: 30px;
+        color: #ffffff;
+        text-transform: uppercase;
 
-        .btn__remove {
-          @include size(20px, 25px);
-          cursor: pointer;
-          opacity: .3;
-
-          &:hover {
-            opacity: 1;
-          }
-
-          &:before,
-          &:after {
-            @include position(absolute, $top: 10px, $left: 0px);
-            @include size(33px, 2px);
-            background-color: $smallButtons;
-            content: '';
-          }
-
-          &:before {
-            transform: rotate(45deg);
-          }
-
-          &:after {
-            transform: rotate(-45deg);
-          }
+        &:hover {
+          background: $basic-text-color;
         }
       }
     }
@@ -111,9 +96,14 @@
     .cart__buy {
       @include font(14px, $bright-text-color);
       @include margin-padding(null, null, all, 10px);
+      @include transition(.4s);
       background-color: $smallButtons;
       cursor: pointer;
       text-transform: uppercase;
+
+      &:hover {
+        background-color: $basic-text-color;
+      }
     }
   }
 }

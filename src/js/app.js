@@ -1,3 +1,6 @@
+("use strict");
+import "../scss/main.scss";
+import "@babel/polyfill";
 // variables
 const popup = document.createElement("div");
 const cartBtn = document.querySelector(".basket");
@@ -38,8 +41,13 @@ class Display {
           <img src="${item.url}" alt="${item.title}" class="product__img">
         </a>
         <div class="product-txt">
-          <h6 class="product-txt__header">${item.name}</h6>
-          <button data-id="${item.id}" class="product-txt__basket">Add to cart</button>
+          <h6 class="product-txt__header">${this.trimText(
+            item.name,
+            30
+          )}...</h6>
+          <button data-id="${
+            item.id
+          }" class="product-txt__basket">Add to cart</button>
           <div class="product-txt__price">${item.price} PLN</div>
         </div>
       </div>
@@ -48,7 +56,7 @@ class Display {
     productsDOM.innerHTML = result;
   }
 
-  displayModal = (warning, name) => {
+  displayModal(warning, name) {
     let md = `
       <div class="modal-content">
         <span class="cross cross-modal"><i class="fas fa-times"></i></span>
@@ -68,7 +76,7 @@ class Display {
         modal.classList.remove("show-modal");
       });
     }
-  };
+  }
 
   addToCart() {
     let buttons = [...document.querySelectorAll(".product-txt__basket")];
@@ -86,7 +94,7 @@ class Display {
         e.target.innerText = "In Cart";
         button.classList.add("in_cart");
 
-        let cartItem = {...Storage.getProduct(id),amount: 1};
+        let cartItem = { ...Storage.getProduct(id), amount: 1 };
         this.displayModal("Added to cart:", cartItem.title);
 
         cart = [...cart, cartItem];
@@ -97,7 +105,7 @@ class Display {
       });
     });
   }
-  
+
   setCartValues(cart) {
     let tempTotal = 0;
     let itemsTotal = 0;
@@ -106,7 +114,9 @@ class Display {
       itemsTotal += item.amount;
     });
 
-    itemsTotal > 0 ? cartItems.classList.add("pulse") : cartItems.classList.remove("pulse");
+    itemsTotal > 0
+      ? cartItems.classList.add("pulse")
+      : cartItems.classList.remove("pulse");
 
     cartTotal.innerText = parseFloat(tempTotal);
     cartItems.innerText = itemsTotal;
@@ -130,13 +140,15 @@ class Display {
             item.price
           }</strong> pln</span>
           <div class="cart--count">
-            <input type="number" class="input__count" min="1" max="100" value="${item.amount}" data-id=${item.id}> art.
+            <input type="number" class="input__count" min="1" max="100" value="${
+              item.amount
+            }" data-id=${item.id}> art.
           </div>
         </div>
       </div>
-      <div class="cart__del">
-        <div class="btn__remove" data-id=${item.id}></i></div>
-      </div>
+
+        <div class="btn__remove" data-id=${item.id}>delete</div>
+
     `;
     cartContent.appendChild(div);
   }
@@ -151,7 +163,7 @@ class Display {
     this.populateCart(cart);
     this.showHideCart();
   }
-  
+
   populateCart(cart) {
     cart.forEach(item => this.addCartItem(item));
   }
@@ -178,8 +190,12 @@ class Display {
     cartContent.addEventListener("click", e => {
       if (e.target.classList.contains("btn__remove")) {
         let id = e.target.dataset.id;
-        cartContent.removeChild(e.target.parentElement.parentElement);
+        cartContent.removeChild(e.target.parentElement);
         this.removeItem(id);
+
+        if (parseFloat(cartItems.innerText) <= 0) {
+          cartAll.classList.remove("show");
+        }
       }
       if (e.target.classList.contains("input__count")) {
         let id = e.target.dataset.id;
@@ -199,7 +215,7 @@ class Display {
     button.classList.remove("in_cart");
     button.innerText = "Add to cart";
   }
-  
+
   getSingleButton(id) {
     return buttonsDOM.find(button => button.dataset.id === id);
   }
@@ -209,24 +225,24 @@ class Storage {
   static saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
   }
-  
+
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem("products"));
     return products.find(product => product.id === id);
   }
-  
+
   static saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
-  
+
   static getCart() {
-    return localStorage.getItem("cart") ?
-      JSON.parse(localStorage.getItem("cart")) : [];
+    return localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : [];
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	
   const ui = new Display();
   const products = new Products();
   ui.setupAPP();
