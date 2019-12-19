@@ -25,9 +25,9 @@
 
   &_name {
     @include font(26px, $bright-text-color, 300);
+    @include margin-padding(bottom, 50px, null, null);
     letter-spacing: 5px;
     text-transform: uppercase;
-    @include margin-padding(bottom, 50px, null, null);
 
     @include media-queries(tablet, max) {
       @include font(14px, null, null);

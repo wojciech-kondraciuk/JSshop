@@ -11,9 +11,9 @@
     @include position(absolute, $top: 0, $left: 0);
     @include transition(.4s);
     @include size(100%, 0);
+    @include margin-padding(null, null, top, 50%);
     background-size: contain;
     background-repeat: no-repeat;
-    padding-top: 50%;
 
     .slide_text {
       @include centerer;

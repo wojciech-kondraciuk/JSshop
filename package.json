@@ -1,7 +1,7 @@
 {
-  "name": "webpack_new_starter",
+  "name": "bookstore",
   "version": "1.0.0",
-  "description": "starter",
+  "description": "js shop cart",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode=development",
@@ -10,15 +10,19 @@
     "clean": "rimraf dist"
   },
   "keywords": [],
-  "author": "",
+  "author": "wk",
   "license": "ISC",
   "devDependencies": {
+    "serialize-javascript": "^2.1.2",
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
+    "@babel/polyfill": "^7.7.0",
     "babel-loader": "^8.0.6",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
     "node-sass": "^4.13.0",
     "rimraf": "^3.0.0",
     "sass-loader": "^8.0.0",
@@ -27,9 +31,6 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.7.0",
-    "css-loader": "^3.2.0",
-    "simplelightbox": "^1.17.3",
-    "style-loader": "^1.0.0"
+    "simplelightbox": "^1.17.3"
   }
 }

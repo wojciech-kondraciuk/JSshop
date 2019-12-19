@@ -13,8 +13,8 @@
     @include margin-padding(bottom, 40px, null, null);
 
     .blog_header {
-      color: $bright-text-color;
       @include margin-padding(all, 0 0 10px 0, null, null);
+      color: $bright-text-color;
     }
   }
 
@@ -32,12 +32,12 @@
     .article {
       @include font(13px, $bright-text-color);
       @include margin-padding(bottom, 20px, null, null);
-      flex-basis: 33%;
+      @include flex-basis(33%);
 
 
       &_link {
-        float: left;
         @include margin-padding(bottom, 20px, null, null);
+        float: left;
 
         @include media-queries(tablet, max) {
           float: none;
@@ -50,14 +50,14 @@
       }
 
       &_title {
-        clear: both;
         @include font(20px, $basic-layout-color);
         @include margin-padding(bottom, 10px, null, null);
+        clear: both;
       }
 
       &_txt {
-        line-height: 23px;
         @include margin-padding(bottom, 15px, null, null);
+        line-height: 23px;
       }
 
       &_date {
@@ -73,15 +73,15 @@
   @include flex-wrap(wrap);
 
   .menu {
-    flex-basis: 25%;
+    @include flex-basis(25%);
 
     @include media-queries(laptop, max) {
-      flex-basis: 50%;
+      @include flex-basis(50%);
       @include margin-padding(bottom, 20px, null, null);
     }
 
     @include media-queries(tablet, max) {
-      flex-basis: 100%;
+      @include flex-basis(100%);
       text-align: center;
     }
 
@@ -109,11 +109,11 @@
 
       .input_news {
         @include font(9px, $bright-text-color, 300);
-        text-transform: uppercase;
         @include size(225px, 50px);
+        @include margin-padding(bottom, 20px, left, 20px);
+        text-transform: uppercase;
         border: none;
         background-color: $input-color;
-        @include margin-padding(bottom, 20px, left, 20px);
 
         @include media-queries(tablet, max) {
           width: 80%;
@@ -125,12 +125,12 @@
       }
 
       .btn_news {
-        @include font(22px, $bright-text-color);
+        @include font(14px, $bright-text-color);
         @include custom-button(50px, 50px, $basic-layout-color, $bright-text-color);
         border: none;
 
         @include media-queries(tablet, max) {
-          width: 20%;
+          @include size(20%, auto);
         }
 
         &:hover {

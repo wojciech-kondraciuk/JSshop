@@ -10,7 +10,7 @@ all based on localStorage
 
 ## What I used?
 * HTML/HTML5 (using BEM)
-* CSS/CSS3 
+* CSS/CSS3
 * Vanilla JS with elements ES6
 * JQ (only animated)
 * SCSS

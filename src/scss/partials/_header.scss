@@ -20,9 +20,9 @@
     @include flex(5);
 
     @include media-queries(laptop, max) {
-      flex: 1;
-      order: 4;
-      flex-basis: 100%;
+      @include flex(1);
+      @include order(4);
+      @include flex-basis(100%);
       @include flex-direction(column);
       max-height: 0;
       transition: max-height 0.15s ease-out;
@@ -62,10 +62,10 @@
 
         &.active,
         &:hover {
+          @include margin-padding(null, null, left, 10px);
           background: none;
           border-left: 5px solid $basic-layout-color;
           color: $basic-text-color;
-          padding-left: 10px;
         }
       }
     }
@@ -80,7 +80,7 @@
     cursor: pointer;
 
     @include media-queries(laptop, max) {
-      order: 3;
+      @include order(3);
       @include flex(none);
     }
 
@@ -116,7 +116,7 @@
   z-index: 99;
 
   @include media-queries(laptop, max) {
-    order: 2;
+    @include order(2);
     @include flex(none);
   }
 
@@ -141,7 +141,6 @@
     @include margin-padding(all, 0px 5px, null, null);
     @include transition(.3s ease);
     cursor: pointer;
-
 
     &:hover {
       color: $basic-layout-color;

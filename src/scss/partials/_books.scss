@@ -5,22 +5,22 @@
 }
 
 .product {
-  flex-basis: 23%;
+  @include flex-basis(23%);
   @include margin-padding(bottom, 50px, null, null);
 
   @include media-queries(tablet, max) {
-    flex-basis: 31%;
+    @include flex-basis(31%);
   }
 
   @include media-queries(mobile_L, max) {
-    flex-basis: 100%;
+    @include flex-basis(100%);
     @include margin-padding(bottom, 20px, null, null);
   }
 
   &__img {
-    float: left;
     @include size(100%, auto);
     @include margin-padding(bottom, 10px, null, null);
+    float: left;
   }
 
   &-txt {
@@ -34,9 +34,10 @@
     }
 
     .product-txt__header {
-      flex-basis: 100%;
+      @include flex-basis(100%);
       @include font(16px, null, 300);
       @include margin-padding(bottom, 10px, null, null);
+      float: left;
 
       @include media-queries(laptop, max) {
         @include order(1);
@@ -58,7 +59,6 @@
         opacity: .3;
         cursor: not-allowed;
         pointer-events: none;
-
       }
 
       &:hover {
@@ -75,7 +75,6 @@
         @include margin-padding(bottom, 10px, null, null);
         font-weight: bold;
       }
-
     }
   }
 }

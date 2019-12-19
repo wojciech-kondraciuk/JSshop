@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     app: "./src/js/app.js",
-    scripts: "./src/js/scripts.js"
+    scripts: ["@babel/polyfill", "./src/scss/main.scss", "./src/js/scripts.js"]
   },
 
   output: {
@@ -50,19 +50,19 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: "app.css",
       ignoreOrder: false
     }),
     new HtmlWebpackPlugin({
       minify: {
-        collapseWhitespace: true //minimalize or not
+        collapseWhitespace: true
       },
       hash: true,
       template: "index.htm"
     })
   ],
   optimization: {
-    minimize: false,
+    minimize: true,
     runtimeChunk: {
       name: "vendor"
     },

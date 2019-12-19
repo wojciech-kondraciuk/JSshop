@@ -81,7 +81,6 @@ $breakpoints: (
 //wrapper margin auto
 @mixin push--auto {
     display: block;
-
     margin: {
         left: auto;
         right: auto;
@@ -94,9 +93,7 @@ $breakpoints: (
         -webkit-box-shadow: inset $top $left $blur $color;
         -moz-box-shadow: inset $top $left $blur $color;
         box-shadow: inset $top $left $blur $color;
-    }
-
-    @else {
+    } @else {
         -webkit-box-shadow: $top $left $blur $color;
         -moz-box-shadow: $top $left $blur $color;
         box-shadow: $top $left $blur $color;

@@ -1,6 +1,4 @@
 ("use strict");
-import "../scss/main.scss";
-import "@babel/polyfill";
 // variables
 const popup = document.createElement("div");
 const cartBtn = document.querySelector(".basket");
@@ -41,13 +39,8 @@ class Display {
           <img src="${item.url}" alt="${item.title}" class="product__img">
         </a>
         <div class="product-txt">
-          <h6 class="product-txt__header">${this.trimText(
-            item.name,
-            30
-          )}...</h6>
-          <button data-id="${
-            item.id
-          }" class="product-txt__basket">Add to cart</button>
+          <h6 class="product-txt__header">${this.trimText(item.name, 30)}...</h6>
+          <button data-id="${item.id}" class="product-txt__basket">Add to cart</button>
           <div class="product-txt__price">${item.price} PLN</div>
         </div>
       </div>
@@ -118,7 +111,7 @@ class Display {
       ? cartItems.classList.add("pulse")
       : cartItems.classList.remove("pulse");
 
-    cartTotal.innerText = parseFloat(tempTotal);
+    cartTotal.innerText = parseFloat(tempTotal).toFixed(2);
     cartItems.innerText = itemsTotal;
   }
 
@@ -127,28 +120,21 @@ class Display {
     div.classList.add("cart__item");
     div.innerHTML = `
       <div class="cart__img">
-        <img src="${item.url}" alt=""
-          class="img">
+        <img src="${item.url}" alt="" class="img">
       </div>
       <div class="cart__text">
         <div class="cart__text--shortcut">
-        <h6 class="cart__text--name">${item.name}</h6>
-         ${this.trimText(item.body, 150)}...
+          <h6 class="cart__text--name">${item.name}</h6>
+          ${this.trimText(item.body, 150)}...
         </div>
         <div class="cart__text--price">
-          <span class="cart--price">Price: <strong>${
-            item.price
-          }</strong> pln</span>
+          <span class="cart--price">Price: <strong>${item.price}</strong> pln</span>
           <div class="cart--count">
-            <input type="number" class="input__count" min="1" max="100" value="${
-              item.amount
-            }" data-id=${item.id}> art.
+            <input type="number" class="input__count" min="1" max="100" value="${item.amount}" data-id=${item.id}> art.
           </div>
         </div>
       </div>
-
-        <div class="btn__remove" data-id=${item.id}>delete</div>
-
+      <div class="btn__remove" data-id=${item.id}>delete</div>
     `;
     cartContent.appendChild(div);
   }
