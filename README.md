@@ -10,11 +10,7 @@ all based on localStorage
 
 ## What I used?
 * HTML/HTML5 (using BEM)
-<<<<<<< HEAD
 * CSS/CSS3
-=======
-* CSS/CSS3/SCSS 
->>>>>>> a192c4afb5349b5a4a88ba21758494f8b1296506
 * Vanilla JS with elements ES6
 * JQ (only scrollTo)
 * WebPack
