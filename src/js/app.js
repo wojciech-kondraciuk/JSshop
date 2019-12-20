@@ -39,12 +39,18 @@ class Display {
           <img src="${item.url}" alt="${item.title}" class="product__img">
         </a>
         <div class="product-txt">
+<<<<<<< HEAD
           <h6 class="product-txt__header">${this.trimText(item.name, 30)}...</h6>
           <button data-id="${item.id}" class="product-txt__basket">Add to cart</button>
+=======
+          <h6 class="product-txt__header">${this.trimText(item.name,30)}...</h6>
+          <button data-id="${
+            item.id
+          }" class="product-txt__basket">Add to cart</button>
+>>>>>>> a192c4afb5349b5a4a88ba21758494f8b1296506
           <div class="product-txt__price">${item.price} PLN</div>
         </div>
-      </div>
-   `;
+      </div>`;
     });
     productsDOM.innerHTML = result;
   }
@@ -56,8 +62,8 @@ class Display {
         <h1 class="modal-header">${warning}</h1>
         <h2 class="modal-title">${name}</h2>
         <button class="modal-btn">Close</button>
-      </div>
-  `;
+      </div>`;
+    
     popup.classList.add("modal");
     popup.innerHTML = md;
     document.body.appendChild(popup);
@@ -74,7 +80,6 @@ class Display {
   addToCart() {
     let buttons = [...document.querySelectorAll(".product-txt__basket")];
     buttonsDOM = buttons;
-
     buttons.forEach(button => {
       let id = button.dataset.id;
       let inCart = cart.find(item => item.id === id);
@@ -107,11 +112,17 @@ class Display {
       itemsTotal += item.amount;
     });
 
+<<<<<<< HEAD
     itemsTotal > 0
       ? cartItems.classList.add("pulse")
       : cartItems.classList.remove("pulse");
 
     cartTotal.innerText = parseFloat(tempTotal).toFixed(2);
+=======
+    itemsTotal > 0 ? cartItems.classList.add("pulse") : cartItems.classList.remove("pulse");
+    
+    cartTotal.innerText = parseFloat(tempTotal);
+>>>>>>> a192c4afb5349b5a4a88ba21758494f8b1296506
     cartItems.innerText = itemsTotal;
   }
 

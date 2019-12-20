@@ -29,9 +29,7 @@ left.addEventListener("click", () => nextSlide(-1));
 right.addEventListener("click", () => nextSlide(+1));
 showDivs(index);
 
-setInterval(function() {
-	nextSlide(+1);
-}, 4000);
+setInterval(() => nextSlide(+1), 4000);
 
 //back to top
 let scrollTo = 100,
