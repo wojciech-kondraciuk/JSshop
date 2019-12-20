@@ -26,27 +26,6 @@ h4 {
   }
 }
 
-#back-to-top {
-  @include position(fixed, $right: 40px, $bottom: 40px);
-  @include size(50px, 50px);
-  @include font(38px, $bright-text-color, null, 50px);
-  @include transition(.4s);
-  z-index: 9999;
-  text-align: center;
-  background-color: $smallButtons;
-  cursor: pointer;
-  border: 0;
-  opacity: 0;
-
-  &:hover {
-    background: $basic-layout-color;
-  }
-}
-
-#back-to-top.show {
-  opacity: 1;
-}
-
 .hamburger {
   @include font(30px, null, null);
   display: none;

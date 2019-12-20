@@ -31,24 +31,13 @@ showDivs(index);
 
 setInterval(() => nextSlide(+1), 4000);
 
-//back to top
-let scrollTo = 100,
-  backToTop = () => {
-    let scrollTop = $(window).scrollTop();
-    scrollTop > scrollTo ? $("#back-to-top").addClass("show") : $("#back-to-top").removeClass("show");
-  };
-
-$(window).scroll(() => backToTop());
-
-$("#back-to-top, .logo").click(() => $("html, body").animate({ scrollTop: 0 }, 700));
-
 //scroll to section
-$(".nav__link").click(function(e) {
+$(".nav__link").click(function (e) {
   e.preventDefault();
   $(".nav__link").removeClass("active");
   $(this).addClass("active");
   let position = $($(this).attr("href")).offset().top;
-  $("body, html").animate({scrollTop: position},800);
+  $("body, html").animate({ scrollTop: position }, 800);
 });
 
 //rwd menu
